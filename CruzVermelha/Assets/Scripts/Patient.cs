@@ -6,6 +6,14 @@ public class Patient : MonoBehaviour
 {
     Case PatientCase;
 
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if(PatientCase == null)
+        {
+            Debug.LogError("Patient was not initialized");
+        }
+    }
 
     public void Initialize(Case caseTemplate)
     {

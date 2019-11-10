@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87b28f28c43ae341b738efee165f86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eixoX: 0
+  posCamera: {fileID: 669534303}
   localizacoes:
   - {fileID: 2087860247}
   - {fileID: 503070940}
@@ -580,8 +580,8 @@ MonoBehaviour:
   - {fileID: 408535720}
   - {fileID: 469824134}
   indiceLocal: 2
-  posCamera: {fileID: 669534303}
   alturaCamera: 0
+  eixoX: 0
   velocidadeCamera: 3
 --- !u!4 &1381159936
 Transform:
