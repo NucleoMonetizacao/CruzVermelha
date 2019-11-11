@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BurnInLeftHandCase
   m_EditorClassIdentifier: 
   heartAttack: 0
-  burnInLeftHand: 0
+  burnInLeftHand: 1
   choking: 0

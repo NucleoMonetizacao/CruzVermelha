@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Case")]
+[Serializable]
 public class Case : ScriptableObject
 {
     public bool heartAttack = false;

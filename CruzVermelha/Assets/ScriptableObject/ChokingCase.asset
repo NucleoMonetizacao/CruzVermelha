@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartAttack: 0
   burnInLeftHand: 0
-  choking: 0
+  choking: 1

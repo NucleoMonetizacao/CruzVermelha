@@ -9,6 +9,9 @@ public class CurrentLevelReference : ScriptableObject
     public Level Value { get => value; }
 
 
-
+    public void SetValueTo(Level x)
+    {
+        value = x;
+    }
    
 }
