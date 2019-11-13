@@ -32,7 +32,9 @@ public class LevelInitializator : MonoBehaviour
 
     private void Awake()
     {
+
         CurrentLevel = CurrentLevelReference.Value;
+        patientPrefab = CurrentLevel.patientPrefab;
 
         SetMusic();
         SetLevelBackground();
