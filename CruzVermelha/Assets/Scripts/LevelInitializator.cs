@@ -21,6 +21,9 @@ public class LevelInitializator : MonoBehaviour
     [SerializeField]
     List<Transform> screenPoints;
 
+    [SerializeField]
+    PatientSelectionDirector patientSelectionDirector;
+
    
 
 
@@ -66,9 +69,11 @@ public class LevelInitializator : MonoBehaviour
 
     private void InstantiatePatient(Case caseTemplate, Vector3 screenPointPosition)
     {
-        GameObject patientGameObject = Instantiate(patientPrefab, screenPointPosition, Quaternion.identity);
-        patientGameObject.GetComponent<Patient>().Initialize(caseTemplate);
-        patientGameObject.name += " " + caseTemplate.name;
+        Patient newPatient = Instantiate(patientPrefab, screenPointPosition, Quaternion.identity).GetComponent<Patient>();
+        newPatient.Initialize(caseTemplate);
+        patientSelectionDirector.NewPatientInstantiated(newPatient);
+        newPatient.gameObject.name += " " + caseTemplate.name;
+
     }
 
     private Case GetRandomCaseFromCurrentLevel()

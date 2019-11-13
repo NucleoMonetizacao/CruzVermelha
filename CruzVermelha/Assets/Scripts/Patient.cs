@@ -10,6 +10,24 @@ public class Patient : MonoBehaviour
 
     public event Action<Patient> OnSelected = delegate { };
 
+    public enum Conditions {Burn, HeartAttack, Chocking }
+
+    public void CureCondition(Conditions condition)
+    {
+        if(condition == Conditions.Burn)
+        {
+            patientCase.burnInLeftHand = false;
+        }
+        else if (condition == Conditions.HeartAttack)
+        {
+            patientCase.heartAttack = false;
+        }
+        else if(condition == Conditions.Chocking)
+        {
+            patientCase.choking = false;
+        }
+    }
+
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(0.5f);
