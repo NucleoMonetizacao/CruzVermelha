@@ -24,16 +24,16 @@ public class ControladorCamera : MonoBehaviour
     void Update()
     {
         eixoX = localizacoes[indiceLocal].transform.position.x;
-        moverCamera();
+        MoverCamera();
     }
 
-    public void moverCamera()
+    public void MoverCamera()
     {
         Vector3 posicaoDestinoCamera = new Vector3(eixoX, alturaCamera, -10);
         posCamera.transform.position = Vector3.Lerp(posCamera.transform.position, posicaoDestinoCamera, velocidadeCamera * Time.deltaTime);
     }
 
-    public void proximoCaso()
+    public void ProximoCaso()
     {
         if (indiceLocal < 4)
         {
@@ -42,7 +42,7 @@ public class ControladorCamera : MonoBehaviour
 
     }
 
-    public void voltaCaso()
+    public void VoltaCaso()
     {
         if (indiceLocal > 0)
         {
