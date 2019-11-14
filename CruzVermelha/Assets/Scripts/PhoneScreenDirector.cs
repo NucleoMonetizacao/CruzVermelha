@@ -53,11 +53,12 @@ public class PhoneScreenDirector : MonoBehaviour
 
     public void SetPhoneStateToClipboard()
     {
+        ClipboardDirector.SetToCase(ScreenDirector.CurrentPatient.PatientCase);
         currentPhoneState = PhoneStates.Clipboard;
         MainPhoneScreen.SetActive(false);
         ClipboardPhoneScreen.SetActive(true);
         SOSPhoneScreen.SetActive(false);
-        ClipboardDirector.SetToCase(ScreenDirector.CurrentPatient.PatientCase);
+        
     }
 
     public void SetPhoneStateToSOS()

@@ -11,6 +11,9 @@ public class LevelInitializator : MonoBehaviour
     Level CurrentLevel;
 
     [SerializeField]
+    MiniGame MiniGame;
+
+    [SerializeField]
     SpriteRenderer backgroundRenderer;
     [SerializeField]
     AudioSource musicAudioSource;
@@ -21,8 +24,8 @@ public class LevelInitializator : MonoBehaviour
     [SerializeField]
     List<Transform> screenPoints;
 
-    [SerializeField]
-    PatientSelectionDirector patientSelectionDirector;
+    //[SerializeField]
+    //PatientSelectionDirector patientSelectionDirector;
 
    
 
@@ -73,8 +76,9 @@ public class LevelInitializator : MonoBehaviour
     {
         Patient newPatient = Instantiate(patientPrefab, screenPointPosition, Quaternion.identity).GetComponent<Patient>();
         newPatient.Initialize(caseTemplate);
-        patientSelectionDirector.NewPatientInstantiated(newPatient);
+        //patientSelectionDirector.NewPatientInstantiated(newPatient);
         newPatient.gameObject.name += " " + caseTemplate.name;
+        MiniGame.PatientInstanciated(newPatient);
 
     }
 

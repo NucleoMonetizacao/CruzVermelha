@@ -26,22 +26,23 @@ public class ClipboardDirector : MonoBehaviour
 
     public void SetToCase(Case patientCase)
     {
+        patientCase = FindObjectOfType<ScreenDirector>().CurrentPatient.PatientCase; //não 
         desiresHelpField.SetToValue(true);
         fractureField.SetToValue(false);
-        if(patientCase.choking)
-        {
-            fractureField.SetToValue(false);
-            burnField.SetToValue(false);
-            bleedingField.SetToValue(false);
-            consciousField.SetToValue(true);
-            breathingField.SetToValue(false);
-        }
-        else if(patientCase.heartAttack)
+        if(patientCase.heartAttack)
         {
             fractureField.SetToValue(false);
             burnField.SetToValue(false);
             bleedingField.SetToValue(false);
             consciousField.SetToValue(false);
+            breathingField.SetToValue(true);
+        }
+        else
+        {
+            fractureField.SetToValue(false);
+            burnField.SetToValue(false);
+            bleedingField.SetToValue(false);
+            consciousField.SetToValue(true);
             breathingField.SetToValue(true);
         }
     }
