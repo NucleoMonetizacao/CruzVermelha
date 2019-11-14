@@ -34,7 +34,7 @@ public class MinigameRitmo : MonoBehaviour
 
     public void ButtonCheck()
     {
-        if(seta.position.y >= 2.33f)
+        if(seta.localPosition.y >= 2.33f)
         {
             textoFeedback.text = "Acertou !!!";
             barraDeVida.fillAmount += 0.1f;
@@ -42,7 +42,7 @@ public class MinigameRitmo : MonoBehaviour
             scoreText.text = "Acertos: " + score;
             return;
         }
-        if (seta.position.y <= 2.32f)
+        if (seta.localPosition.y <= 2.32f)
         {
             textoFeedback.text = "Errou";
             barraDeVida.fillAmount -= 0.1f;
