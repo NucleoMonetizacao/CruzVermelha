@@ -6,19 +6,25 @@ using UnityEngine.UI;
 public class MinigameRitmo : MonoBehaviour
 {
 
-    [Header("Bool")]
+    [Header("Variaveis")]
 
     private bool check;
+    private float vida = 50;
+    private float score;
 
 
 
-    [Header("Texto")]
+    [Header("UI")]
 
     [SerializeField]
     private Text textoFeedback;
+    [SerializeField]
+    private Text scoreText;
+    [SerializeField]
+    private Image barraDeVida;
 
 
-    
+
     [Header("Position")]
 
     [SerializeField]
@@ -30,43 +36,20 @@ public class MinigameRitmo : MonoBehaviour
     {
         if(seta.position.y >= 2.33f)
         {
-            textoFeedback.text = "Acertou Vermelho";
+            textoFeedback.text = "Acertou !!!";
+            barraDeVida.fillAmount += 0.1f;
+            score++;
+            scoreText.text = "Acertos: " + score;
             return;
         }
-        if (seta.position.y <= 2.32f && seta.position.y >= 1.57f)
+        if (seta.position.y <= 2.32f)
         {
-            textoFeedback.text = "Acertou Laranja";
-            return;
-        }
-        if (seta.position.y <= 1.56f && seta.position.y >= 0.8f)
-        {
-            textoFeedback.text = "Acertou Amarelo";
-            return;
-        }
-        if (seta.position.y <= 0.7f && seta.position.y >= 0.06f)
-        {
-            textoFeedback.text = "Acertou Verde Claro";
-            return;
-        }
-        if (seta.position.y <= 0.05f && seta.position.y >= -0.722f)
-        {
-            textoFeedback.text = "Acertou Verde Escuro";
-            return;
-        }
-        if (seta.position.y <= -0.721f && seta.position.y >= -1.48f)
-        {
-            textoFeedback.text = "Acertou Azul Claro";
-            return;
-        }
-        if (seta.position.y <= -1.49f && seta.position.y >= -2.24f)
-        {
-            textoFeedback.text = "Acertou Azul Escuro";
-            return;
-        }
-        if (seta.position.y <= -2.25f && seta.position.y >= -3f)
-        {
-            textoFeedback.text = "Acertou Roxo";
+            textoFeedback.text = "Errou";
+            barraDeVida.fillAmount -= 0.1f;
+            score--;
+            scoreText.text = "Acertos: " + score;
             return;
         }
     }
 }
+
