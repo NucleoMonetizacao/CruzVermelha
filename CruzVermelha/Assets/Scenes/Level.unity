@@ -296,7 +296,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 480, y: 800}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 480, y: 800}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3703,6 +3703,11 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 2625927945516331849, guid: a62a48a96be514f4d9abf12be5d0e78f,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2625927945516331851, guid: a62a48a96be514f4d9abf12be5d0e78f,
         type: 3}
       propertyPath: perdeVida
@@ -3767,6 +3772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 2625927946377025966, guid: a62a48a96be514f4d9abf12be5d0e78f,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3790160494434209569, guid: a62a48a96be514f4d9abf12be5d0e78f,
         type: 3}
@@ -4474,7 +4484,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 480, y: 800}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -5243,6 +5253,11 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 3940605678413114172, guid: 88442d8a535240c43acf701a59d5264f,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3940605677164548566, guid: 88442d8a535240c43acf701a59d5264f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5379,7 +5394,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 480, y: 800}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
