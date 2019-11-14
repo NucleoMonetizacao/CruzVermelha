@@ -9,4 +9,10 @@ public class Case : ScriptableObject
     public bool burnInLeftHand = false;
     public bool choking = false;
 
+
+    public bool policeCalled = false;
+
+    public bool fireDepartmentCalled = false;
+    public bool ambulanceCalled = false;
+
 }
