@@ -14,6 +14,10 @@ public class Level : ScriptableObject
     public AudioClip MusicClip { get => musicClip; }
 
 
+    public GameObject patientPrefab; //deletar depos
+    
+
+
 
     [Space]
     [SerializeField]
