@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ScreenDirector : MonoBehaviour
+public class OverviewScreenDirector : MonoBehaviour
 {
     Patient currentPatient;
     public Patient CurrentPatient { get => currentPatient; }
 
     [SerializeField]
-    GameState currentGameState;
+    GameState1 currentGameState;
 
-    public event Action<GameState> OnGameStateChange = delegate { };
+    public event Action<GameState1> OnGameStateChange = delegate { };
 
     void Start()
     {
-        SetGameState(GameState.Main);
+        SetGameState(GameState1.Main);
         currentPatient = FindObjectOfType<Patient>(); //placeholder
         
     }
 
 
-    public void SetGameState(GameState newState)
+    public void SetGameState(GameState1 newState)
     {
         currentGameState = newState;
         OnGameStateChange(currentGameState);
@@ -29,33 +29,33 @@ public class ScreenDirector : MonoBehaviour
 
     public void SetGameStateToMainScreen()
     {
-        SetGameState(GameState.Main);
+        SetGameState(GameState1.Main);
     }
 
     public void SetGameStateToOptionsScreen()
     {
-        SetGameState(GameState.Options);
+        SetGameState(GameState1.Options);
     }
 
     public void SetGameStateToPhoneScreen()
     {
-        SetGameState(GameState.Phone);
+        SetGameState(GameState1.Phone);
     }
 
     public void TogglePhoneScreenGameState()
     {
-        if (currentGameState == GameState.Phone)
+        if (currentGameState == GameState1.Phone)
         {
-            SetGameState(GameState.Main);
+            SetGameState(GameState1.Main);
         }
         else
         {
-            SetGameState(GameState.Phone);
+            SetGameState(GameState1.Phone);
         }
     }
 }
 
-public enum GameState
+public enum GameState1
 {
     Main, Phone, Options
 }

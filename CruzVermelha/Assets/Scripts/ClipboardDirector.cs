@@ -26,7 +26,7 @@ public class ClipboardDirector : MonoBehaviour
 
     public void SetToCase(Case patientCase)
     {
-        patientCase = FindObjectOfType<ScreenDirector>().CurrentPatient.PatientCase; //não 
+        patientCase = FindObjectOfType<OverviewScreenDirector>().CurrentPatient.PatientCase; //não 
         desiresHelpField.SetToValue(true);
         fractureField.SetToValue(false);
         if(patientCase.heartAttack)
