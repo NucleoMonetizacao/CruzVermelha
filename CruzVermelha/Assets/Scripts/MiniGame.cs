@@ -5,9 +5,20 @@ using UnityEngine.UI;
 
 public class MiniGame : MonoBehaviour
 {
-    Patient currentPatient;
+    [SerializeField]
+    CurrentPatientReference currentPatient;
     [SerializeField]
     Image lifeSlider;
+
+    public void DisablePatient()
+    {
+        currentPatient.Value.gameObject.SetActive(false);
+    }
+
+    public void EnablePatient()
+    {
+        currentPatient.Value.gameObject.SetActive(true);
+    }
 
     public void PatientInstanciated(Patient x)
     {
@@ -21,7 +32,6 @@ public class MiniGame : MonoBehaviour
         {
             gameObject.SetActive(true);
             x.gameObject.SetActive(false);
-            currentPatient = x;
         }
     }
 
@@ -30,8 +40,7 @@ public class MiniGame : MonoBehaviour
         if(lifeSlider.fillAmount > 0.98)
         {
             gameObject.SetActive(false);
-            currentPatient.gameObject.SetActive(true);
-            currentPatient.PatientCase.heartAttack = false;
+            currentPatient.Value.PatientCase.heartAttack = false;
         }
     }
 

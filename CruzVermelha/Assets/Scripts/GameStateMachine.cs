@@ -1,23 +1,61 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 public class GameStateMachine : MonoBehaviour
 {
     [SerializeField]
+    GameStateEnum startingState;
+
+    GameStateEnum currentState;
+
+    Dictionary<GameStateEnum, StateInMachine> stateInMachineByGameStateEnum;
+
+    [SerializeField]
     StateInMachine[] statesInMachine;
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
-        
+        SetDictionary();
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    void Start()
+    {
+        foreach (StateInMachine x in statesInMachine)
+        {
+            x.Exit();
+        }
+        if (startingState)
+        {
+           
+            currentState = startingState;
+            stateInMachineByGameStateEnum[startingState].Enter();
+        }
+    }
+
+    void SetDictionary()
+    {
+        stateInMachineByGameStateEnum = new Dictionary<GameStateEnum, StateInMachine>();
+        foreach (StateInMachine x in statesInMachine)
+        {
+            stateInMachineByGameStateEnum.Add(x.gameStateEnum, x);
+        }
+    }
+
+    public void SetState(GameStateEnum newState)
     {
         
+        if (currentState)
+        {
+            stateInMachineByGameStateEnum[currentState].Exit();
+        }
+    
+        stateInMachineByGameStateEnum[newState].Enter();
+        currentState = newState;
+
     }
 
     [Serializable]
@@ -28,5 +66,17 @@ public class GameStateMachine : MonoBehaviour
 #endif
         public GameStateEnum gameStateEnum;
         public GameState gameState;
+
+        public void Enter()
+        { 
+            gameState.gameObject.SetActive(true);
+            gameState.StateEnter();
+        }
+
+        public void Exit()
+        {
+            gameState.gameObject.SetActive(false);
+            gameState.StateExit();
+        }
     }
 }

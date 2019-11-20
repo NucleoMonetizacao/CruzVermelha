@@ -15,7 +15,7 @@ public class PhoneScreenDirector : MonoBehaviour
     [SerializeField]
     GameObject ClipboardPhoneScreen;
     [SerializeField]
-    ClipboardDirector ClipboardDirector;
+    ClipboardUI ClipboardDirector;
 
 
 
@@ -53,7 +53,7 @@ public class PhoneScreenDirector : MonoBehaviour
 
     public void SetPhoneStateToClipboard()
     {
-        ClipboardDirector.SetToCase(overviewScreenDirector.CurrentPatient.PatientCase);
+        //ClipboardDirector.SetToCase(overviewScreenDirector.CurrentPatient.PatientCase);
         currentPhoneState = PhoneStates.Clipboard;
         MainPhoneScreen.SetActive(false);
         ClipboardPhoneScreen.SetActive(true);
