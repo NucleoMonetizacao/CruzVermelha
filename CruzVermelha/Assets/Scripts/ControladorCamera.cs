@@ -18,6 +18,7 @@ public class ControladorCamera : MonoBehaviour
         alturaCamera = posCamera.position.y;
 
 
+
     }
 
     // Update is called once per frame

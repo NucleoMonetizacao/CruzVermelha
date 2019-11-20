@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIDirector : MonoBehaviour
+[RequireComponent(typeof(Scripts.Utility.HierarchyHighlighter))]
+public class OverviewUIDirector : MonoBehaviour
 {
     [SerializeField]
-    ScreenDirector screenDirector;
+    OverviewScreenDirector overviewScreenDirector;
 
     [SerializeField]
     GameObject mainScreenRoot;
@@ -20,21 +21,21 @@ public class UIDirector : MonoBehaviour
 
     private void Start()
     {
-        screenDirector.OnGameStateChange += GameStateChangedEvent;
+        overviewScreenDirector.OnGameStateChange += GameStateChangedEvent;
     }
 
 
-    void GameStateChangedEvent(GameState currentState)
+    void GameStateChangedEvent(GameState1 currentState)
     {
-        if(currentState == GameState.Main)
+        if(currentState == GameState1.Main)
         {
             SetUIToMainScreen();
         }
-        else if (currentState == GameState.Options)
+        else if (currentState == GameState1.Options)
         {
             SetUIToOptionsScreen();
         }
-        else if (currentState == GameState.Phone)
+        else if (currentState == GameState1.Phone)
         {
             SetsUIToPhoneScreen();
         }

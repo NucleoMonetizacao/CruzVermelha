@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClipboardDirector : MonoBehaviour
+public class ClipboardUI : MonoBehaviour
 {
     [SerializeField]
     ClipboardField breathingField;
@@ -24,9 +24,9 @@ public class ClipboardDirector : MonoBehaviour
 
   
 
-    public void SetToCase(Case patientCase)
+    public void SetToCase(CurrentPatientReference currentCaseRerence)
     {
-        patientCase = FindObjectOfType<ScreenDirector>().CurrentPatient.PatientCase; //não 
+        Case patientCase = currentCaseRerence.Value.PatientCase;
         desiresHelpField.SetToValue(true);
         fractureField.SetToValue(false);
         if(patientCase.heartAttack)

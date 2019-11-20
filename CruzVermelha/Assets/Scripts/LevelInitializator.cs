@@ -7,11 +7,13 @@ using System.Linq;
 public class LevelInitializator : MonoBehaviour
 {
     [SerializeField]
-    CurrentLevelReference CurrentLevelReference;
-    Level CurrentLevel;
+    CurrentLevelReference currentLevelReference;
+    [SerializeField]
+    CurrentPatientReference currentPatientReference;
+    Level currentLevel;
 
     [SerializeField]
-    MiniGame MiniGame;
+    MiniGame miniGame;  //DELETAR
 
     [SerializeField]
     SpriteRenderer backgroundRenderer;
@@ -36,8 +38,8 @@ public class LevelInitializator : MonoBehaviour
     private void Awake()
     {
 
-        CurrentLevel = CurrentLevelReference.Value;
-        patientPrefab = CurrentLevel.patientPrefab;
+        currentLevel = currentLevelReference.Value;
+        patientPrefab = currentLevel.patientPrefab;
 
         SetMusic();
         SetLevelBackground();
@@ -53,22 +55,23 @@ public class LevelInitializator : MonoBehaviour
 
     private void SetLevelBackground()
     {
-        backgroundRenderer.sprite = CurrentLevel.BackgroundImage;
+        backgroundRenderer.sprite = currentLevel.BackgroundImage;
     }
 
     private void SetMusic()
     {
-        musicAudioSource.clip = CurrentLevel.MusicClip;
+        musicAudioSource.clip = currentLevel.MusicClip;
         musicAudioSource.Play();
     }
 
     private void InstantiateAllPatients()
     {
         screenPoints = screenPoints.OrderBy(i => UnityEngine.Random.value).ToList();
-        for (int i = 0; i < CurrentLevel.NumberOfPatients; i++)
+        for (int i = 0; i < currentLevel.NumberOfPatients; i++)
         {
             Case caseTemplate = GetRandomCaseFromCurrentLevel();
             InstantiatePatient(caseTemplate, screenPoints[i].position);
+            
         }
     }
 
@@ -76,9 +79,9 @@ public class LevelInitializator : MonoBehaviour
     {
         Patient newPatient = Instantiate(patientPrefab, screenPointPosition, Quaternion.identity).GetComponent<Patient>();
         newPatient.Initialize(caseTemplate);
-        //patientSelectionDirector.NewPatientInstantiated(newPatient);
         newPatient.gameObject.name += " " + caseTemplate.name;
-        MiniGame.PatientInstanciated(newPatient);
+        miniGame.PatientInstanciated(newPatient);
+        currentPatientReference.SetValueTo(newPatient.GetComponent<Patient>());
 
     }
 
@@ -88,14 +91,14 @@ public class LevelInitializator : MonoBehaviour
 
         float currentOdds = 0f;
 
-        for (int i = 0; i < CurrentLevel.PossibleCases.Length; i++)
+        for (int i = 0; i < currentLevel.PossibleCases.Length; i++)
         {
 
-            if (randomNumber <= CurrentLevel.PossibleCases[i].ChanceToAppear + currentOdds)
+            if (randomNumber <= currentLevel.PossibleCases[i].ChanceToAppear + currentOdds)
             {
-                return CurrentLevel.PossibleCases[i].CaseTemplate;
+                return currentLevel.PossibleCases[i].CaseTemplate;
             }
-            currentOdds += CurrentLevel.PossibleCases[i].ChanceToAppear;
+            currentOdds += currentLevel.PossibleCases[i].ChanceToAppear;
         }
 
         Debug.LogError("Combined chances for cases in level isn't equal to 1");
@@ -105,7 +108,7 @@ public class LevelInitializator : MonoBehaviour
     void CheckIfSumOfCaseChancesInLevelIsEqualToOne()
     {
         float sum = 0f;
-        foreach(Level.PossibleCase x in CurrentLevel.PossibleCases)
+        foreach(Level.PossibleCase x in currentLevel.PossibleCases)
         {
             sum += x.ChanceToAppear;
         }
@@ -117,7 +120,7 @@ public class LevelInitializator : MonoBehaviour
 
     void CheckIfEnoughScreenPointsForNumberOfPatients()
     {
-        if (CurrentLevel.NumberOfPatients > screenPoints.Count)
+        if (currentLevel.NumberOfPatients > screenPoints.Count)
         {
             Debug.LogError("Not enough screenPoints for patients");
         }

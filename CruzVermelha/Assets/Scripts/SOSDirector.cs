@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SOSDirector : MonoBehaviour
 {
     [SerializeField]
-    ScreenDirector screenDirector;
+    OverviewScreenDirector screenDirector;
     Case currentCase;
 
 

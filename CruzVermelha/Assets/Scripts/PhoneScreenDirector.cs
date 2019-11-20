@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhoneScreenDirector : MonoBehaviour
 {
     [SerializeField]
-    ScreenDirector ScreenDirector;
+    OverviewScreenDirector overviewScreenDirector;
 
     PhoneStates currentPhoneState;
 
@@ -15,7 +15,7 @@ public class PhoneScreenDirector : MonoBehaviour
     [SerializeField]
     GameObject ClipboardPhoneScreen;
     [SerializeField]
-    ClipboardDirector ClipboardDirector;
+    ClipboardUI ClipboardDirector;
 
 
 
@@ -53,7 +53,7 @@ public class PhoneScreenDirector : MonoBehaviour
 
     public void SetPhoneStateToClipboard()
     {
-        ClipboardDirector.SetToCase(ScreenDirector.CurrentPatient.PatientCase);
+        //ClipboardDirector.SetToCase(overviewScreenDirector.CurrentPatient.PatientCase);
         currentPhoneState = PhoneStates.Clipboard;
         MainPhoneScreen.SetActive(false);
         ClipboardPhoneScreen.SetActive(true);
@@ -68,7 +68,7 @@ public class PhoneScreenDirector : MonoBehaviour
         ClipboardPhoneScreen.SetActive(false);
         SOSPhoneScreen.SetActive(true);
 
-        SOSDirector.SetCaseAndRefreshButtons(ScreenDirector.CurrentPatient.PatientCase);
+        SOSDirector.SetCaseAndRefreshButtons(overviewScreenDirector.CurrentPatient.PatientCase);
 
     }
 
