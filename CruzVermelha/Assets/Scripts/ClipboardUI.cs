@@ -27,23 +27,18 @@ public class ClipboardUI : MonoBehaviour
     public void SetToCase(CurrentPatientReference currentCaseRerence)
     {
         Case patientCase = currentCaseRerence.Value.PatientCase;
-        desiresHelpField.SetToValue(true);
-        fractureField.SetToValue(false);
-        if(patientCase.heartAttack)
+
+        if (patientCase.examinationComplete)
         {
-            fractureField.SetToValue(false);
-            burnField.SetToValue(false);
-            bleedingField.SetToValue(false);
-            consciousField.SetToValue(false);
-            breathingField.SetToValue(true);
+            patientCase.completeClipboardChecked = true;
         }
-        else
-        {
-            fractureField.SetToValue(false);
-            burnField.SetToValue(false);
-            bleedingField.SetToValue(false);
-            consciousField.SetToValue(true);
-            breathingField.SetToValue(true);
-        }
+
+        desiresHelpField.SetToValue(patientCase.desiresHelp);
+        fractureField.SetToValue(patientCase.fractures);
+        burnField.SetToValue(patientCase.burn);
+        bleedingField.SetToValue(patientCase.bleeding);
+        consciousField.SetToValue(patientCase.conciouss);
+        breathingField.SetToValue(patientCase.breathing);
+
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MiniGameEngasgo : MonoBehaviour
 {
@@ -14,12 +15,11 @@ public class MiniGameEngasgo : MonoBehaviour
     [Header("Variaveis resultado")]
     public Text txtResultado;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public  event Action OnSucess = delegate { };
+    public event Action OnFailure = delegate { };
 
-    }
 
+    
 
     // Update is called once per frame
     void Update()
@@ -43,16 +43,17 @@ public class MiniGameEngasgo : MonoBehaviour
     {
         if (collision.CompareTag("FimEngasgo"))
         {
-            print("papagaio");
             txtResultado.text = "Você conseguiu!";
             subtracaoBarra = 0;
             adicaoBarra = 0;
+            OnSucess();
         }
         else if (collision.CompareTag("PerdeuEngasgo"))
         {
             txtResultado.text = "O paciente morreu";
             subtracaoBarra = 0;
             adicaoBarra = 0;
+            OnFailure();
         }
     }
 }

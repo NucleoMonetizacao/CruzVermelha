@@ -15,3 +15,13 @@ MonoBehaviour:
   heartAttack: 1
   burnInLeftHand: 0
   choking: 0
+  examinationComplete: 0
+  completeClipboardChecked: 1
+  headExamined: 0
+  rightHandExamined: 0
+  leftHandExamined: 0
+  chestExamined: 0
+  calledHelp: 1
+  policeCalled: 0
+  fireDepartmentCalled: 0
+  ambulanceCalled: 0

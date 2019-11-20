@@ -12,8 +12,7 @@ public class LevelInitializator : MonoBehaviour
     CurrentPatientReference currentPatientReference;
     Level currentLevel;
 
-    [SerializeField]
-    MiniGame miniGame;  //DELETAR
+
 
     [SerializeField]
     SpriteRenderer backgroundRenderer;
@@ -80,7 +79,6 @@ public class LevelInitializator : MonoBehaviour
         Patient newPatient = Instantiate(patientPrefab, screenPointPosition, Quaternion.identity).GetComponent<Patient>();
         newPatient.Initialize(caseTemplate);
         newPatient.gameObject.name += " " + caseTemplate.name;
-        miniGame.PatientInstanciated(newPatient);
         currentPatientReference.SetValueTo(newPatient.GetComponent<Patient>());
 
     }
