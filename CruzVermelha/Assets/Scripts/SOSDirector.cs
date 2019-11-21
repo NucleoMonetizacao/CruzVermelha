@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class SOSDirector : MonoBehaviour
 {
+
     [SerializeField]
-    OverviewScreenDirector screenDirector;
-    Case currentCase;
+    CurrentPatientReference currentPatientReference;
+   
 
 
     [SerializeField]
@@ -19,15 +20,13 @@ public class SOSDirector : MonoBehaviour
     [SerializeField]
     Button ambulanceButton;
 
-    public void SetCaseAndRefreshButtons(Case x)
-    {
-        currentCase = x;
-        SetButtons();
-    }
 
-    private void SetButtons()
+
+    public void SetButtons()
     {
-        if(currentCase.ambulanceCalled)
+        Case currentCase = currentPatientReference.Value.PatientCase;
+
+        if (currentCase.ambulanceCalled)
         {
             ambulanceButton.interactable = false;
         }
@@ -58,21 +57,26 @@ public class SOSDirector : MonoBehaviour
 
     public void CallPolice()
     {
-        currentCase.policeCalled = true;
+        Case x = currentPatientReference.Value.PatientCase;
+        x.calledHelp = true;
+        x.policeCalled = true;
         policeButton.interactable = false;
     }
 
     public void CallFireDepartment()
     {
-        currentCase.fireDepartmentCalled = true;
+        Case x = currentPatientReference.Value.PatientCase;
+        x.calledHelp = true;
+        x.fireDepartmentCalled = true;
         fireDepartmentButton.interactable = false;
     }
 
 
     public void CallAmbulance()
     {
-        
-        currentCase.ambulanceCalled = true;
+        Case x = currentPatientReference.Value.PatientCase;
+        x.calledHelp = true;
+        x.ambulanceCalled = true;
         ambulanceButton.interactable = false;
     }
 }

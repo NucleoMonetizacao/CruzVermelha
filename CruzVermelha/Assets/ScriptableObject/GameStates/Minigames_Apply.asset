@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3661e65a8498c4bb57499c3de58a75, type: 3}
-  m_Name: CurrentLevelReference
+  m_Script: {fileID: 11500000, guid: 38af2323bc3b76543b92e217dbfd9049, type: 3}
+  m_Name: Minigames_Apply
   m_EditorClassIdentifier: 
-  value: {fileID: 11400000, guid: 5f102222e757edf4db855da488adf9d4, type: 2}

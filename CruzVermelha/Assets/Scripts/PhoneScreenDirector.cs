@@ -68,8 +68,7 @@ public class PhoneScreenDirector : MonoBehaviour
         ClipboardPhoneScreen.SetActive(false);
         SOSPhoneScreen.SetActive(true);
 
-        SOSDirector.SetCaseAndRefreshButtons(overviewScreenDirector.CurrentPatient.PatientCase);
-
+      
     }
 
     public enum PhoneStates
