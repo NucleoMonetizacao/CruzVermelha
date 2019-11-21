@@ -6,19 +6,30 @@ using UnityEngine.UI;
 public class MainStateAdditionalBehaviour : MonoBehaviour
 {
     [SerializeField]
-    CurrentPatientReference currentPatient;
+    CurrentPatientReference currentPatientReference;
     [SerializeField]
     Button minigameChoiceButton;
+    [SerializeField]
+    GameObject levelCompleteGameObject;
 
     public void CheckIfCanSelectMiniGame()
     {
-        if(currentPatient.Value.PatientCase.completeClipboardChecked && currentPatient.Value.PatientCase.calledHelp)
+        if(currentPatientReference.Value.PatientCase.completeClipboardChecked && currentPatientReference.Value.PatientCase.calledHelp)
         {
             minigameChoiceButton.interactable = true;
         }
         else
         {
             minigameChoiceButton.interactable = false;
+        }
+    }
+
+    public void CheckIfLevelIsComplete()
+    {
+        Case x = currentPatientReference.Value.PatientCase;
+        if(x.heartAttack == false && x.choking == false && x.burnInLeftHand == false)
+        {
+            levelCompleteGameObject.SetActive(true);
         }
     }
 }

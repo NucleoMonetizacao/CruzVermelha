@@ -8,15 +8,64 @@ public class Examination : MonoBehaviour
 
     [SerializeField]
     GameObject examinationCompleteIcon;
+    [SerializeField]
+    GameObject updatedClipboardIcon;
 
     [SerializeField]
     Button returnButton;
+
+    [SerializeField]
+    Button rightHandPointButton;
+    [SerializeField]
+    Button leftHandPointButton;
+    [SerializeField]
+    Button chestPointButton;
+    [SerializeField]
+    Button headPointButton;
 
     public void BackToDefaultCameraPosition()
     {
         CameraFocus.BackToStartingPositionAndSize();
         returnButton.interactable = false;
+        updatedClipboardIcon.SetActive(false);
 
+    }
+
+    public void SetPointButtons()
+    {
+        Case x = CurrentPatientReference.Value.PatientCase;
+        if(x.chestExamined)
+        {
+            chestPointButton.interactable = false;
+        }
+        else
+        {
+            chestPointButton.interactable = true;
+        }
+        if (x.leftHandExamined)
+        {
+            leftHandPointButton.interactable = false;
+        }
+        else
+        {
+            leftHandPointButton.interactable = true;
+        }
+        if (x.rightHandExamined)
+        {
+            rightHandPointButton.interactable = false;
+        }
+        else
+        {
+            rightHandPointButton.interactable = true;
+        }
+        if (x.headExamined)
+        {
+            headPointButton.interactable = false;
+        }
+        else
+        {
+            headPointButton.interactable = true;
+        }
     }
 
     public void FocusOnPoint(ExaminationPoint x)
@@ -27,7 +76,13 @@ public class Examination : MonoBehaviour
 
     public void FocusOnRightHand()
     {
+        rightHandPointButton.interactable = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
+
+        if(!patientCase.rightHandExamined)
+        {
+            updatedClipboardIcon.SetActive(true);
+        }
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
@@ -47,7 +102,13 @@ public class Examination : MonoBehaviour
 
     public void FocusOnLeftHand()
     {
+        leftHandPointButton.interactable = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
+
+        if (!patientCase.leftHandExamined)
+        {
+            updatedClipboardIcon.SetActive(true);
+        }
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
@@ -66,7 +127,13 @@ public class Examination : MonoBehaviour
 
     public void FocusOnChest()
     {
+        chestPointButton.interactable = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
+
+        if (!patientCase.chestExamined)
+        {
+            updatedClipboardIcon.SetActive(true);
+        }
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
@@ -84,7 +151,13 @@ public class Examination : MonoBehaviour
 
     public void FocusOnHead()
     {
+        headPointButton.interactable = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
+
+        if (!patientCase.headExamined)
+        {
+            updatedClipboardIcon.SetActive(true);
+        }
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
@@ -102,7 +175,6 @@ public class Examination : MonoBehaviour
             patientCase.conciouss = false;
         }
 
-        patientCase.burn = false;
 
         patientCase.headExamined = true;
 

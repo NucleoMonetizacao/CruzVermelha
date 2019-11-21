@@ -7,6 +7,11 @@ public class SceneLoader : MonoBehaviour
 {
     public void ReloadScene()
     {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadMenuScene()
+    {
         SceneManager.LoadScene(0);
     }
 }
