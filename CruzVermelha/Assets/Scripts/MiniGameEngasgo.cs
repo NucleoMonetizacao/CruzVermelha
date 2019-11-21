@@ -50,10 +50,13 @@ public class MiniGameEngasgo : MonoBehaviour
         }
         else if (collision.CompareTag("PerdeuEngasgo"))
         {
+
+
             txtResultado.text = "O paciente morreu";
             subtracaoBarra = 0;
             adicaoBarra = 0;
             OnFailure();
+
         }
     }
 }

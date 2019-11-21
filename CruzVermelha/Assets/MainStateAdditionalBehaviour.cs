@@ -11,6 +11,8 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     Button minigameChoiceButton;
     [SerializeField]
     GameObject levelCompleteGameObject;
+    [SerializeField]
+    GameObject levelFailedGameObject;
 
     public void CheckIfCanSelectMiniGame()
     {
@@ -30,6 +32,15 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
         if(x.heartAttack == false && x.choking == false && x.burnInLeftHand == false)
         {
             levelCompleteGameObject.SetActive(true);
+        }
+    }
+
+    public void CheckIfLevelIsFailed()
+    {
+        Case x = currentPatientReference.Value.PatientCase;
+        if (x.isDead)
+        {
+            levelFailedGameObject.SetActive(true);
         }
     }
 }

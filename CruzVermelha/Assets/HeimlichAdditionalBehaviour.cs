@@ -48,4 +48,13 @@ public class HeimlichAdditionalBehaviour : MonoBehaviour
             x.breathing = true;
         }
     }
+
+    public void KillPatientIfChoking()
+    {
+        Case x = currentPatientReference.Value.PatientCase;
+        if (x.choking)
+        {
+            x.isDead = true;
+        }
+    }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class Case : ScriptableObject
 {
+    public bool isDead = false;
+
     public bool heartAttack = false;
     public bool burnInLeftHand = false;
     public bool choking = false;
