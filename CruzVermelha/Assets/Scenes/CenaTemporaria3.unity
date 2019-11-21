@@ -222,41 +222,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.6499329
-      objectReference: {fileID: 0}
-    - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.85131836
-      objectReference: {fileID: 0}
-    - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -22.45648
-      objectReference: {fileID: 0}
-    - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8088947180182110376, guid: acb66f7f93723124588bfe2a8c0ab2fd,
-        type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
@@ -280,5 +245,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1032812795}
+    - target: {fileID: 8088947179286701463, guid: acb66f7f93723124588bfe2a8c0ab2fd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb66f7f93723124588bfe2a8c0ab2fd, type: 3}

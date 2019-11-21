@@ -325,5 +325,45 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1032812795}
+    - target: {fileID: 2285266197180528317, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraVermelha_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285266198019866120, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraLaranja_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285266198186452462, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraVerde_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285266198295756761, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraAmarela_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285266198361311682, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraVermelha_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285266198370061132, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraVerde_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285266198382211243, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraAmarela_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285266198612069728, guid: fe0d7d645f5ea134fa6002459a384299,
+        type: 3}
+      propertyPath: m_Name
+      value: BarraVerde_08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0d7d645f5ea134fa6002459a384299, type: 3}
