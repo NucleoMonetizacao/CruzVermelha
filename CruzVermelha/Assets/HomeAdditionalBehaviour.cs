@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +8,13 @@ public class HomeAdditionalBehaviour : MonoBehaviour
     CurrentPatientReference currentPatientReference;
     [SerializeField]
     Button SOSButton;
+    [SerializeField]
+    Animator anim;
+
+    public void PlayPhoneUpAnimation()
+    {
+        anim.Play("PhoneUp");
+    }
 
     public void CheckIfSOSButtonIsInteractable()
     {
@@ -20,5 +26,10 @@ public class HomeAdditionalBehaviour : MonoBehaviour
         {
             SOSButton.interactable = false;
         }
+    }
+
+    public void PlayHomeSound()
+    {
+        AudioPlayer.PlaySound(0);
     }
 }

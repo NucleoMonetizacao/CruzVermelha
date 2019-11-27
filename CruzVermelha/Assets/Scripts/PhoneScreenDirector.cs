@@ -22,7 +22,7 @@ public class PhoneScreenDirector : MonoBehaviour
     [SerializeField]
     GameObject SOSPhoneScreen;
     [SerializeField]
-    SOSDirector SOSDirector;
+    SOSAdditionalBehaviour SOSDirector;
 
     // Start is called before the first frame update
     void Start()

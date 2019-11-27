@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Examination : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class Examination : MonoBehaviour
     Button chestPointButton;
     [SerializeField]
     Button headPointButton;
+
+    [SerializeField]
+    UnityEvent ExaminationCompleted;
 
     public void BackToDefaultCameraPosition()
     {
@@ -188,6 +192,7 @@ public class Examination : MonoBehaviour
         {
             patientCase.examinationComplete = true;
             examinationCompleteIcon.SetActive(true);
+            ExaminationCompleted.Invoke();
         }
     }
 

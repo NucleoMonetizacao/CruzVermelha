@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - audioClip: {fileID: 8300000, guid: 7cdf7ab65555fda4781b5799f94a3de3, type: 3}
-    name: 
-    devNote: 
+    name: Guitarrinha
+    devNote: Um som de guitarra estranho
   - audioClip: {fileID: 8300000, guid: ade2d69c1dbd8d34cb8938f042aa628b, type: 3}
-    name: 
-    devNote: 
+    name: "Explos\xE3o8Bit"
+    devNote: "Uma explos\xE3o 8bit"
+  - audioClip: {fileID: 8300000, guid: 0db61e57abcb78d43ba1edbbcbc7921e, type: 3}
+    name: ChamadoSOS
+    devNote: '
+
+'

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SOSDirector : MonoBehaviour
+public class SOSAdditionalBehaviour : MonoBehaviour
 {
 
     [SerializeField]
@@ -52,6 +52,11 @@ public class SOSDirector : MonoBehaviour
         {
             policeButton.interactable = true;
         }
+    }
+
+    public void PlaySOSCalledSound()
+    {
+        AudioPlayer.PlaySound(2);
     }
 
 

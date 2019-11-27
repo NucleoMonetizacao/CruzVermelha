@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClipboardUI : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class ClipboardUI : MonoBehaviour
     [SerializeField]
     ClipboardField fractureField;
 
+    public UnityEvent CompleteClipboardChecked;
+
   
 
     public void SetToCase(CurrentPatientReference currentCaseRerence)
@@ -31,6 +34,7 @@ public class ClipboardUI : MonoBehaviour
         if (patientCase.examinationComplete)
         {
             patientCase.completeClipboardChecked = true;
+            CompleteClipboardChecked.Invoke();
         }
 
         desiresHelpField.SetToValue(patientCase.desiresHelp);

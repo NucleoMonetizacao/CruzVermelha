@@ -14,6 +14,14 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     GameObject levelFailedGameObject;
 
+    [SerializeField]
+    Animator phoneDownAnimator;
+
+    public void PutPhoneDownAnimation()
+    {
+        phoneDownAnimator.Play("PutPhoneDown");
+    }
+
     public void CheckIfCanSelectMiniGame()
     {
         if(currentPatientReference.Value.PatientCase.completeClipboardChecked && currentPatientReference.Value.PatientCase.calledHelp)
