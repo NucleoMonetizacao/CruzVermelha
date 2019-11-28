@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +18,11 @@ public class SOSAdditionalBehaviour : MonoBehaviour
 
     [SerializeField]
     Button ambulanceButton;
+
+    [SerializeField]
+    UnityEvent helpCalledUnityEvent;
+
+
 
 
 
@@ -66,6 +70,7 @@ public class SOSAdditionalBehaviour : MonoBehaviour
         x.calledHelp = true;
         x.policeCalled = true;
         policeButton.interactable = false;
+        helpCalledUnityEvent.Invoke();
     }
 
     public void CallFireDepartment()
@@ -74,6 +79,7 @@ public class SOSAdditionalBehaviour : MonoBehaviour
         x.calledHelp = true;
         x.fireDepartmentCalled = true;
         fireDepartmentButton.interactable = false;
+        helpCalledUnityEvent.Invoke();
     }
 
 
@@ -83,5 +89,6 @@ public class SOSAdditionalBehaviour : MonoBehaviour
         x.calledHelp = true;
         x.ambulanceCalled = true;
         ambulanceButton.interactable = false;
+        helpCalledUnityEvent.Invoke();
     }
 }

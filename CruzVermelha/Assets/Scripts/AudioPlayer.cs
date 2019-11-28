@@ -31,18 +31,6 @@ public class AudioPlayer : MonoBehaviour
     }
 
 
-    void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-
-    }
 
     public static void PlaySound(int soundIndex)
     {

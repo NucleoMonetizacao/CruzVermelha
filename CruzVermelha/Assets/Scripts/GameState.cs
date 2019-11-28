@@ -12,10 +12,17 @@ public class GameState : MonoBehaviour
     [SerializeField]
     UnityEvent OnStateExitUnityEvent;
 
+    [SerializeField]
+    TutorialRootInState tutorialRootInState;
+
 
     public void StateEnter()
     {
         OnStateEnterUnityEvent.Invoke();
+        if(tutorialRootInState && tutorialRootInState.gameObject.activeSelf)
+        {
+            tutorialRootInState.CheckTutorialElements();
+        }
     }
 
     public void StateExit()

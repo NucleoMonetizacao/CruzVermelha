@@ -25,6 +25,9 @@ public class LevelInitializator : MonoBehaviour
     [SerializeField]
     List<Transform> screenPoints;
 
+    [SerializeField]
+    BoolReference[] allTutorialBools;
+
     //[SerializeField]
     //PatientSelectionDirector patientSelectionDirector;
 
@@ -38,14 +41,42 @@ public class LevelInitializator : MonoBehaviour
     {
 
         currentLevel = currentLevelReference.Value;
-        patientPrefab = currentLevel.patientPrefab;
+        patientPrefab = currentLevel.PatientPrefab;
 
         SetMusic();
         SetLevelBackground();
         InstantiateAllPatients();
-        
-        AudioPlayer.PlaySound(0);
+        SetTutorial();
 
+        EditorTests();
+
+
+    }
+
+    private void SetTutorial()
+    {
+        if (currentLevel.IsTutorial)
+        {
+            foreach (TutorialRootInState x in FindObjectsOfType<TutorialRootInState>())
+            {
+                x.gameObject.SetActive(true);
+            }
+            foreach(BoolReference x in allTutorialBools)
+            {
+                x.value = false;
+            }
+        }
+        else
+        {
+            foreach (TutorialRootInState x in FindObjectsOfType<TutorialRootInState>())
+            {
+                x.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void EditorTests()
+    {
 #if UNITY_EDITOR
         CheckIfSumOfCaseChancesInLevelIsEqualToOne();
         CheckIfEnoughScreenPointsForNumberOfPatients();

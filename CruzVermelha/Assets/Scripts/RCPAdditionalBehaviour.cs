@@ -55,9 +55,13 @@ public class RCPAdditionalBehaviour : MonoBehaviour
 
     public void CurePatientHeartAttack()
     {
-        currentPatient.Value.PatientCase.heartAttack = false;
-        currentPatient.Value.PatientCase.conciouss = true;
-        currentPatient.Value.PatientCase.breathing = true;
+        Case x = currentPatient.Value.PatientCase;
+        if (x.heartAttack)
+        {
+            currentPatient.Value.PatientCase.heartAttack = false;
+            currentPatient.Value.PatientCase.conciouss = true;
+            currentPatient.Value.PatientCase.breathing = true;
+        }
     }
 
     public void KillPatientIfHeartAttack()

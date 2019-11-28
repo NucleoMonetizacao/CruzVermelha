@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec3a982b5db48942aa0689f480eb635, type: 3}
-  m_Name: ChokingCase
+  m_Script: {fileID: 11500000, guid: 8174f1509c5c614498aec9c11dc64399, type: 3}
+  m_Name: HelpCalled
   m_EditorClassIdentifier: 
-  heartAttack: 0
-  burnInLeftHand: 0
-  choking: 1
+  value: 0
