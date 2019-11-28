@@ -23,16 +23,26 @@ public class Examination : MonoBehaviour
     Button chestPointButton;
     [SerializeField]
     Button headPointButton;
+    [SerializeField]
+    float examinationCameraSize;
+
 
     [SerializeField]
     UnityEvent ExaminationCompleted;
 
+    
+
     public void BackToDefaultCameraPosition()
     {
         CameraFocus.BackToStartingPositionAndSize();
-        returnButton.interactable = false;
+        returnButton.enabled = false;
         updatedClipboardIcon.SetActive(false);
 
+    }
+
+    public void SetToExaminationCamera()
+    {
+        CameraFocus.FocusOnPositionWithSize(Camera.main.transform.position, examinationCameraSize);
     }
 
     public void SetPointButtons()
@@ -40,47 +50,49 @@ public class Examination : MonoBehaviour
         Case x = CurrentPatientReference.Value.PatientCase;
         if(x.chestExamined)
         {
-            chestPointButton.interactable = false;
+            chestPointButton.enabled = false;
+            
         }
         else
         {
-            chestPointButton.interactable = true;
+            chestPointButton.enabled  = true;
         }
         if (x.leftHandExamined)
         {
-            leftHandPointButton.interactable = false;
+            leftHandPointButton.enabled  = false;
         }
         else
         {
-            leftHandPointButton.interactable = true;
+            leftHandPointButton.enabled  = true;
         }
         if (x.rightHandExamined)
         {
-            rightHandPointButton.interactable = false;
+            rightHandPointButton.enabled  = false;
         }
         else
         {
-            rightHandPointButton.interactable = true;
+            rightHandPointButton.enabled = true;
         }
         if (x.headExamined)
         {
-            headPointButton.interactable = false;
+            headPointButton.enabled = false;
         }
         else
         {
-            headPointButton.interactable = true;
+            headPointButton.enabled = true;
         }
     }
 
     public void FocusOnPoint(ExaminationPoint x)
     {
-        returnButton.interactable = true;
+        returnButton.enabled = true;
         CameraFocus.FocusOnPositionWithSize(new Vector3(x.cameraPosition.x, x.cameraPosition.y, -10), x.cameraSize);
     }
 
     public void FocusOnRightHand()
     {
-        rightHandPointButton.interactable = false;
+        rightHandPointButton.enabled = false;
+        rightHandPointButton.image.enabled = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
 
         if(!patientCase.rightHandExamined)
@@ -106,8 +118,9 @@ public class Examination : MonoBehaviour
 
     public void FocusOnLeftHand()
     {
-        leftHandPointButton.interactable = false;
-        Case patientCase = CurrentPatientReference.Value.PatientCase;
+        leftHandPointButton.enabled = false;
+        leftHandPointButton.image.enabled = false;
+       Case patientCase = CurrentPatientReference.Value.PatientCase;
 
         if (!patientCase.leftHandExamined)
         {
@@ -131,7 +144,8 @@ public class Examination : MonoBehaviour
 
     public void FocusOnChest()
     {
-        chestPointButton.interactable = false;
+        chestPointButton.enabled = false;
+        chestPointButton.image.enabled = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
 
         if (!patientCase.chestExamined)
@@ -155,7 +169,8 @@ public class Examination : MonoBehaviour
 
     public void FocusOnHead()
     {
-        headPointButton.interactable = false;
+        headPointButton.enabled = false;
+        headPointButton.image.enabled = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
 
         if (!patientCase.headExamined)
