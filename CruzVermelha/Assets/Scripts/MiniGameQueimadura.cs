@@ -37,6 +37,7 @@ public class MiniGameQueimadura : MonoBehaviour
 
     public void DropPlayer()
     {
+        StopCoroutine("LimpaResposta");
         float Distance = Vector3.Distance(player.transform.localPosition, pia.transform.localPosition);
         if(Distance<50)
         {
