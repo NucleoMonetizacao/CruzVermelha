@@ -11,6 +11,7 @@ public class LevelInitializator : MonoBehaviour
     [SerializeField]
     CurrentPatientReference currentPatientReference;
     Level currentLevel;
+    
 
 
 
@@ -43,6 +44,7 @@ public class LevelInitializator : MonoBehaviour
         currentLevel = currentLevelReference.Value;
         patientPrefab = currentLevel.PatientPrefab;
 
+        SetScreenPoints();
         SetMusic();
         SetLevelBackground();
         InstantiateAllPatients();
@@ -51,6 +53,25 @@ public class LevelInitializator : MonoBehaviour
         EditorTests();
 
 
+    }
+
+    void SetScreenPoints()
+    {
+        for(int i = 0; i < screenPoints.Count; i++)
+        {
+            if(i < currentLevel.NumberOfLocation)
+            {
+                screenPoints[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                screenPoints[i].gameObject.SetActive(false);
+                screenPoints.Remove(screenPoints[i]);
+                i--;
+            }
+        }
+
+       
     }
 
     private void SetTutorial()
