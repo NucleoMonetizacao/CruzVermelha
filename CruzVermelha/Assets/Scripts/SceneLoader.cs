@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void ReloadScene()
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void LoadLevelSelection()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void LoadMenuScene()
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
     }

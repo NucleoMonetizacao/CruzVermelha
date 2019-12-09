@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CenaTemporaria3.unity
     guid: 03aa6683141c1c6459f3c9cd8540a606
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 7522fcacff8a6e74284eeebc282f7d1f
+  - enabled: 1
     path: Assets/Scenes/LevelSelection.unity
     guid: eee3995dfc8a7ed4697e5691ec7973bb
   - enabled: 1
