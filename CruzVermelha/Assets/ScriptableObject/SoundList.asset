@@ -24,3 +24,12 @@ MonoBehaviour:
     devNote: '
 
 '
+  - audioClip: {fileID: 8300000, guid: eab4deba1562d5b48ad75b1b6dbc54ce, type: 3}
+    name: EngasgoSFX01
+    devNote: "Som de feedback de engasgo ao terminar o diagn\xF3stico.\n"
+  - audioClip: {fileID: 8300000, guid: d2d4ef719b0734243be76c95426fa57f, type: 3}
+    name: EngasgoSFX02
+    devNote: "Som de feedback de engasgo ao terminar o diagn\xF3stico.\n"
+  - audioClip: {fileID: 8300000, guid: 69117ad8167f1ab41adfeb214c161c52, type: 3}
+    name: EngasgoSFX03
+    devNote: "Som de feedback de engasgo ao terminar o diagn\xF3stico.\n"

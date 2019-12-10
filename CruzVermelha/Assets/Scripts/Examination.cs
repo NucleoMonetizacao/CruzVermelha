@@ -1,6 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class Examination : MonoBehaviour
 {
@@ -30,7 +31,15 @@ public class Examination : MonoBehaviour
     [SerializeField]
     UnityEvent ExaminationCompleted;
 
-    
+
+    private RepetidorFeedbackSonoro _repetidorFeedbackSonoro;
+
+
+
+    private void Start()
+    {
+        _repetidorFeedbackSonoro = FindObjectOfType(typeof(RepetidorFeedbackSonoro)) as RepetidorFeedbackSonoro;
+    }
 
     public void BackToDefaultCameraPosition()
     {
@@ -208,7 +217,30 @@ public class Examination : MonoBehaviour
             patientCase.examinationComplete = true;
             examinationCompleteIcon.SetActive(true);
             ExaminationCompleted.Invoke();
+
+            if (patientCase.choking == true)
+            {
+                AudioPlayer.PlaySound(3);
+                _repetidorFeedbackSonoro.tempoLoop = 4.5f;
+                _repetidorFeedbackSonoro.asfixia = true;
+            }
+            else if(patientCase.heartAttack == true)
+            {
+
+                _repetidorFeedbackSonoro.rcp = true;
+            }
+            else if(patientCase.burnInLeftHand == true)
+            {
+
+                _repetidorFeedbackSonoro.queimadura = true;
+            }
+
+            _repetidorFeedbackSonoro.diagnosticoCompleto = true;
         }
+
+      
     }
+
+ 
 
 }
