@@ -18,28 +18,59 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     Animator phoneDownAnimator;
 
+    [SerializeField]
+    GameObject healedGameObject;
+
     public void PutPhoneDownAnimation()
     {
         phoneDownAnimator.Play("PutPhoneDown");
+    }
+
+    public void CheckIfHealed()
+    {
+        if (currentPatientReference.Value != null)
+        {
+            if (currentPatientReference.Value.PatientCase.isHealed)
+            {
+                healedGameObject.SetActive(true);
+            }
+            else
+            {
+                healedGameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            healedGameObject.SetActive(false);
+        }
     }
     
     public void CheckIfCanSelectMiniGame()
     {
         if (currentPatientReference.Value != null)
         {
+        
             Case currentPatientCase = currentPatientReference.Value.PatientCase;
-            if (currentPatientCase.completeClipboardChecked && currentPatientCase.calledHelp)
+
+            if (!currentPatientCase.isHealed)
             {
-                minigameChoiceButton.interactable = true;
+                if (currentPatientCase.completeClipboardChecked && currentPatientCase.calledHelp)
+                {
+                    minigameChoiceButton.gameObject.SetActive(true);
+                }
+                else
+                {
+                    minigameChoiceButton.gameObject.SetActive(false);
+                }
             }
             else
             {
-                minigameChoiceButton.interactable = false;
+                minigameChoiceButton.gameObject.SetActive(false);
             }
         }
         else
         {
-            minigameChoiceButton.interactable = false;
+            minigameChoiceButton.gameObject.SetActive(false);
         }
     }
 
