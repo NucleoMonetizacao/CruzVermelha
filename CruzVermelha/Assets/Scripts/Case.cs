@@ -6,6 +6,7 @@ using UnityEngine;
 public class Case : ScriptableObject
 {
     public bool isDead = false;
+    public bool isHealed = false;
 
     public bool heartAttack = false;
     public bool burnInLeftHand = false;

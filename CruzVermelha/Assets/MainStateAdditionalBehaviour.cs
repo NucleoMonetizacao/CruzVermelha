@@ -45,17 +45,33 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
 
     public void CheckIfLevelIsComplete()
     {
-        Case x = currentPatientReference.Value.PatientCase;
-        if(x.heartAttack == false && x.choking == false && x.burnInLeftHand == false)
+        bool allPatientsHealed = true;
+        Patient[] patientsInScene = FindObjectsOfType<Patient>();
+        for (int i = 0; i < patientsInScene.Length; i++)
         {
+            if(patientsInScene[i].PatientCase.isHealed == false)
+            {
+                allPatientsHealed = false;
+            }
+        }
+        if(allPatientsHealed)
+        { 
             levelCompleteGameObject.SetActive(true);
         }
     }
 
     public void CheckIfLevelIsFailed()
     {
-        Case x = currentPatientReference.Value.PatientCase;
-        if (x.isDead)
+        bool onePatientDead = false;
+        Patient[] patientsInScene = FindObjectsOfType<Patient>();
+        for (int i = 0; i < patientsInScene.Length; i++)
+        {
+            if (patientsInScene[i].PatientCase.isDead)
+            {
+                onePatientDead = true;
+            }
+        }
+        if (onePatientDead)
         {
             levelFailedGameObject.SetActive(true);
         }

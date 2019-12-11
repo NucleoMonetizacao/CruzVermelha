@@ -44,6 +44,7 @@ public class HeimlichAdditionalBehaviour : MonoBehaviour
         Case x = currentPatientReference.Value.PatientCase;
         if (x.choking)
         {
+            x.isHealed = true;
             x.choking = false;
             x.breathing = true;
         }

@@ -28,6 +28,11 @@ public class MiniGameQueimadura : MonoBehaviour
         playerPosicaoInicial = player.transform.position ;
     }
 
+    public void StartMinigame()
+    {
+        player.transform.position = playerPosicaoInicial;
+    }
+
 
     public void DragPlayer()
     {
@@ -59,6 +64,7 @@ public class MiniGameQueimadura : MonoBehaviour
         Case x = currentPatientReference.Value.PatientCase;
         if(x.burnInLeftHand)
         {
+            x.isHealed = true;
             x.burnInLeftHand = false;
             x.burn = false;
         }
