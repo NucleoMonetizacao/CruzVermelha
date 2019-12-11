@@ -13,7 +13,7 @@ public class LevelSelectionDirector : MonoBehaviour
     public void SelectLevel(Level x)
     {
         CurrentLevelReference.SetValueTo(x);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
 
     }
 }

@@ -58,6 +58,7 @@ public class RCPAdditionalBehaviour : MonoBehaviour
         Case x = currentPatient.Value.PatientCase;
         if (x.heartAttack)
         {
+            currentPatient.Value.PatientCase.isHealed = true;
             currentPatient.Value.PatientCase.heartAttack = false;
             currentPatient.Value.PatientCase.conciouss = true;
             currentPatient.Value.PatientCase.breathing = true;

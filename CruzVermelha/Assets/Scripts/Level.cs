@@ -22,6 +22,10 @@ public class Level : ScriptableObject
     bool isTutorial = false;
     public bool IsTutorial { get => isTutorial; }
 
+    [SerializeField]
+    int numberOfLocations = 1;
+    public int NumberOfLocation { get => numberOfLocations; }
+
 
 
 

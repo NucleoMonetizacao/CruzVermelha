@@ -12,6 +12,8 @@ public class Patient : MonoBehaviour
 
     public enum Conditions {Burn, HeartAttack, Chocking }
 
+    public Transform currentScreenPoint;
+
     public void CureCondition(Conditions condition)
     {
         if(condition == Conditions.Burn)
@@ -37,9 +39,10 @@ public class Patient : MonoBehaviour
         }
     }
 
-    public void Initialize(Case caseTemplate)
+    public void Initialize(Case caseTemplate, Transform screenPoint)
     {
         patientCase = CreateACopyOfCase(caseTemplate);
+        currentScreenPoint = screenPoint;
     }
 
     public void Selected()

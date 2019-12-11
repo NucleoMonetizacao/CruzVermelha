@@ -8,9 +8,16 @@ public class MiniGameEngasgo : MonoBehaviour
 {
     [Header("Variaveis da barra e cursor")]
     public GameObject cursor;
+
+
     public float valorBarra;
     public float subtracaoBarra;
     public float adicaoBarra;
+
+    Vector3 startingPosition;
+    float defSubtracaoBarra = 0;
+    float defAdicaoBarra;
+    float defValorBarror;
 
     [Header("Variaveis resultado")]
     public Text txtResultado;
@@ -19,7 +26,23 @@ public class MiniGameEngasgo : MonoBehaviour
     public event Action OnFailure = delegate { };
 
 
-    
+    private void Start()
+    {
+        startingPosition = transform.localPosition;
+        defAdicaoBarra = adicaoBarra;
+        defSubtracaoBarra = subtracaoBarra;
+        defValorBarror = valorBarra;
+       
+    }
+
+    public void SetDefaultValues()
+    {
+        
+        transform.localPosition = startingPosition;
+        subtracaoBarra = defSubtracaoBarra;
+        adicaoBarra = defAdicaoBarra;
+        valorBarra = defValorBarror;
+    }
 
     // Update is called once per frame
     void Update()
