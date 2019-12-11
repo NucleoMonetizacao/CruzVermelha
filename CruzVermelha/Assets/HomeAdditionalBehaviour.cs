@@ -18,9 +18,16 @@ public class HomeAdditionalBehaviour : MonoBehaviour
 
     public void CheckIfSOSButtonIsInteractable()
     {
-        if(currentPatientReference.Value.PatientCase.completeClipboardChecked)
+        if (currentPatientReference.Value != null)
         {
-            SOSButton.interactable = true;
+            if (currentPatientReference.Value.PatientCase.completeClipboardChecked)
+            {
+                SOSButton.interactable = true;
+            }
+            else
+            {
+                SOSButton.interactable = false;
+            }
         }
         else
         {
