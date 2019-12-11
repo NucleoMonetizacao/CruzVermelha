@@ -14,6 +14,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     GameObject levelFailedGameObject;
 
+
     [SerializeField]
     Animator phoneDownAnimator;
 
@@ -21,12 +22,20 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     {
         phoneDownAnimator.Play("PutPhoneDown");
     }
-
+    
     public void CheckIfCanSelectMiniGame()
     {
-        if(currentPatientReference.Value.PatientCase.completeClipboardChecked && currentPatientReference.Value.PatientCase.calledHelp)
+        if (currentPatientReference.Value != null)
         {
-            minigameChoiceButton.interactable = true;
+            Case currentPatientCase = currentPatientReference.Value.PatientCase;
+            if (currentPatientCase.completeClipboardChecked && currentPatientCase.calledHelp)
+            {
+                minigameChoiceButton.interactable = true;
+            }
+            else
+            {
+                minigameChoiceButton.interactable = false;
+            }
         }
         else
         {

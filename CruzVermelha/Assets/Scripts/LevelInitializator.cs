@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.UI;
 
 public class LevelInitializator : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class LevelInitializator : MonoBehaviour
 
     [SerializeField]
     BoolReference[] allTutorialBools;
+
+    [SerializeField]
+    Button nextScreenButton;
+    [SerializeField]
+    Button backScreenButton;
 
     //[SerializeField]
     //PatientSelectionDirector patientSelectionDirector;
@@ -57,6 +63,11 @@ public class LevelInitializator : MonoBehaviour
 
     void SetScreenPoints()
     {
+        if(currentLevel.NumberOfLocation == 1)
+        {
+            nextScreenButton.gameObject.SetActive(false);
+            backScreenButton.gameObject.SetActive(false);
+        }
         for(int i = 0; i < screenPoints.Count; i++)
         {
             if(i < currentLevel.NumberOfLocation)
@@ -121,15 +132,15 @@ public class LevelInitializator : MonoBehaviour
         for (int i = 0; i < currentLevel.NumberOfPatients; i++)
         {
             Case caseTemplate = GetRandomCaseFromCurrentLevel();
-            InstantiatePatient(caseTemplate, screenPoints[i].position);
+            InstantiatePatient(caseTemplate, screenPoints[i]);
             
         }
     }
 
-    private void InstantiatePatient(Case caseTemplate, Vector3 screenPointPosition)
+    private void InstantiatePatient(Case caseTemplate, Transform screenPoint)
     {
-        Patient newPatient = Instantiate(patientPrefab, screenPointPosition, Quaternion.identity).GetComponent<Patient>();
-        newPatient.Initialize(caseTemplate);
+        Patient newPatient = Instantiate(patientPrefab, screenPoint.position, Quaternion.identity).GetComponent<Patient>();
+        newPatient.Initialize(caseTemplate, screenPoint);
         newPatient.gameObject.name += " " + caseTemplate.name;
         currentPatientReference.SetValueTo(newPatient.GetComponent<Patient>());
 

@@ -13,6 +13,9 @@ public class ControladorCamera : MonoBehaviour
     public float alturaCamera;
     public float eixoX;
     public float velocidadeCamera;
+    Dictionary<Transform, Patient> patientByScreenPoint = new Dictionary<Transform, Patient>();
+    [SerializeField]
+    private CurrentPatientReference currentPatientReference;
 
     [SerializeField]
     Button botaoProximo;
@@ -20,7 +23,7 @@ public class ControladorCamera : MonoBehaviour
     Button botaoVolta;
     
 
-    // Start is called before the first frame update
+
     void Start()
     {
     
@@ -29,10 +32,20 @@ public class ControladorCamera : MonoBehaviour
         Transform firstLocationTransform = localizacoes[0];
         localizacoes = localizacoes.OrderBy(x => x.position.x).ToList();
         indiceLocal = localizacoes.IndexOf(firstLocationTransform);
-        
+
+        CreatePatientByScreenPointDictionary();
 
 
 
+    }
+
+    void CreatePatientByScreenPointDictionary()
+    {
+        Patient[] patientsInScene = FindObjectsOfType<Patient>();
+        foreach(Patient y in patientsInScene)
+        {
+            patientByScreenPoint.Add(y.currentScreenPoint, y);
+        }
     }
 
     void RemoverLocalizacoesInativas()
@@ -46,7 +59,12 @@ public class ControladorCamera : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    public Vector3 GetCurrentOffsetFromCurrentAndStartingPoints()
+    {
+        return localizacoes[0].transform.position - localizacoes[indiceLocal].transform.position;
+    }
+
+
     void Update()
     {
         eixoX = localizacoes[indiceLocal].transform.position.x;
@@ -64,19 +82,35 @@ public class ControladorCamera : MonoBehaviour
         if (indiceLocal < localizacoes.Count- 1)
         {
             indiceLocal += 1;
-            botaoVolta.interactable = true;
+            SetCurrentPatientReference();
+            //botaoVolta.interactable = true;
+            botaoVolta.image.enabled = true;
             if (indiceLocal == localizacoes.Count - 1)
             {
-                botaoProximo.interactable = false;
+                //botaoProximo.interactable = false;
+                botaoProximo.image.enabled = false;
                 
             }
             else
             {
-                botaoProximo.interactable = true;
+                botaoProximo.image.enabled = true;
+                //botaoProximo.interactable = true;
             }
 
         }
 
+    }
+
+    private void SetCurrentPatientReference()
+    {
+        if (patientByScreenPoint.ContainsKey(localizacoes[indiceLocal]))
+        {
+            currentPatientReference.SetValueTo(patientByScreenPoint[localizacoes[indiceLocal]]);
+        }
+        else
+        {
+            currentPatientReference.SetValueTo(null);
+        }
     }
 
     public void VoltaCaso()
@@ -84,14 +118,18 @@ public class ControladorCamera : MonoBehaviour
         if (indiceLocal > 0)
         {
             indiceLocal -= 1;
-            botaoProximo.interactable = true;
+            SetCurrentPatientReference();
+            botaoProximo.image.enabled = true;
+            //botaoProximo.interactable = true;
             if(indiceLocal == 0)
             {
-                botaoVolta.interactable = false;
+                //botaoVolta.interactable = false;
+                botaoVolta.image.enabled = false;
             }
             else
             {
-                botaoVolta.interactable = true;
+                //botaoVolta.interactable = true;
+                botaoVolta.image.enabled = true;
             }
         }
     }

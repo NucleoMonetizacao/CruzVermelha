@@ -15,7 +15,7 @@ public class CameraFocus : MonoBehaviour
     Coroutine lerpCameraCoroutine;
 
     [SerializeField]
-    ControladorCamera controladorCamera; //Tirar
+    ControladorCamera controladorCamera;
 
     private static CameraFocus instance;
     public static CameraFocus Instance
@@ -41,15 +41,17 @@ public class CameraFocus : MonoBehaviour
     void Start()
     {
         startingCameraSize = camera.orthographicSize;
-        startingPosition = transform.position;
+        startingPosition = transform.localPosition;
 
         
     }
 
+ 
 
-    public static void FocusOnPositionWithSize(Vector3 desiredPosition, float desiredSize)
+    public static void FocusOnPositionWithSize(Vector3 desiredPosition , float desiredSize)
     {
-
+  
+       
         Instance.FocusOnPositionWithSize_(desiredPosition, desiredSize);
     }
 
@@ -60,18 +62,20 @@ public class CameraFocus : MonoBehaviour
             StopCoroutine(lerpCameraCoroutine);
         }
         lerpCameraCoroutine = StartCoroutine(CameraLerp(desiredPosition, desiredSize));
+        
     }
 
 
     public static void BackToStartingPositionAndSize()
     {
-        FocusOnPositionWithSize(Instance.startingPosition, Instance.startingCameraSize);
+        FocusOnPositionWithSize(Instance.startingPosition , Instance.startingCameraSize);
     }
 
     IEnumerator CameraLerp(Vector3 desiredPosition, float desiredSize)
     {
+
         lerpCameraCoroutineIsOn = true;
-        Vector3 pastPosition = transform.position;
+        Vector3 pastPosition = transform.localPosition;
         float pastCameraSize = camera.orthographicSize;
         float currentLerpTime = 0f;
         float currentFraction;
@@ -85,12 +89,13 @@ public class CameraFocus : MonoBehaviour
             }
             currentFraction = currentLerpTime / lerpDuration;
 
-            transform.position = Vector3.Lerp(pastPosition, desiredPosition, currentFraction);
+            transform.localPosition = Vector3.Lerp(pastPosition, desiredPosition, currentFraction);
             camera.orthographicSize = Mathf.Lerp(pastCameraSize, desiredSize, currentFraction);
 
             yield return null;
         }
         lerpCameraCoroutineIsOn = false;
+       
     }
 }
 
