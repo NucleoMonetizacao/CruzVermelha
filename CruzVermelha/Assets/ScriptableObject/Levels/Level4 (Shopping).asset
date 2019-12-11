@@ -20,5 +20,5 @@ MonoBehaviour:
   numberOfLocations: 3
   numberOfPatients: 2
   possibleCases:
-  - caseTemplate: {fileID: 11400000, guid: bd89f1c2cb444bf459aafe14fd37ce05, type: 2}
+  - caseTemplate: {fileID: 11400000, guid: d15a1ad6f549d714294a73aef61784ab, type: 2}
     chanceToAppear: 1
