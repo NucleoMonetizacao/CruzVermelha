@@ -21,8 +21,6 @@ public class LevelInitializator : MonoBehaviour
     [SerializeField]
     AudioSource musicAudioSource;
 
-    [SerializeField]
-    GameObject patientPrefab;
 
     [SerializeField]
     List<Transform> screenPoints;
@@ -34,6 +32,9 @@ public class LevelInitializator : MonoBehaviour
     Button nextScreenButton;
     [SerializeField]
     Button backScreenButton;
+
+    [SerializeField]
+    CurrentLevelReference nextLevelToUnlock;
 
     //[SerializeField]
     //PatientSelectionDirector patientSelectionDirector;
@@ -48,7 +49,6 @@ public class LevelInitializator : MonoBehaviour
     {
 
         currentLevel = currentLevelReference.Value;
-        patientPrefab = currentLevel.PatientPrefab;
 
         SetScreenPoints();
         SetMusic();
@@ -57,6 +57,7 @@ public class LevelInitializator : MonoBehaviour
         SetTutorial();
 
         EditorTests();
+        nextLevelToUnlock.SetValueTo(currentLevel.LevelToUnlock);
 
 
     }
@@ -139,7 +140,7 @@ public class LevelInitializator : MonoBehaviour
 
     private void InstantiatePatient(Case caseTemplate, Transform screenPoint)
     {
-        Patient newPatient = Instantiate(patientPrefab, screenPoint.position, Quaternion.identity).GetComponent<Patient>();
+        Patient newPatient = Instantiate(GetRandomPatientPrefabFromCurrentLevel(), screenPoint.position, Quaternion.identity).GetComponent<Patient>();
         newPatient.Initialize(caseTemplate, screenPoint);
         newPatient.gameObject.name += " " + caseTemplate.name;
         currentPatientReference.SetValueTo(newPatient.GetComponent<Patient>());
@@ -163,6 +164,26 @@ public class LevelInitializator : MonoBehaviour
         }
 
         Debug.LogError("Combined chances for cases in level isn't equal to 1");
+        return null;
+    }
+
+    private GameObject GetRandomPatientPrefabFromCurrentLevel()
+    {
+        float randomNumber = UnityEngine.Random.value;
+
+        float currentOdds = 0f;
+
+        for (int i = 0; i < currentLevel.PossiblePatients.Length; i++)
+        {
+
+            if (randomNumber <= currentLevel.PossiblePatients[i].ChanceToAppear + currentOdds)
+            {
+                return currentLevel.PossiblePatients[i].PatientPrefab;
+            }
+            currentOdds += currentLevel.PossiblePatients[i].ChanceToAppear;
+        }
+
+        Debug.LogError("Combined chances for patients in level isn't equal to 1");
         return null;
     }
 

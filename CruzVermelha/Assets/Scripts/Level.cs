@@ -6,6 +6,10 @@ using UnityEngine;
 public class Level : ScriptableObject
 {
     [SerializeField]
+    bool locked = true;
+    public bool Locked { get => locked; }
+
+    [SerializeField]
     Sprite backgroundImage;
     public Sprite BackgroundImage { get => backgroundImage; }
 
@@ -13,10 +17,6 @@ public class Level : ScriptableObject
     AudioClip musicClip;
     public AudioClip MusicClip { get => musicClip; }
 
-
-    [SerializeField]
-    GameObject patientPrefab; //deletar depos
-    public GameObject PatientPrefab { get => patientPrefab; }
 
     [SerializeField]
     bool isTutorial = false;
@@ -38,14 +38,37 @@ public class Level : ScriptableObject
     PossibleCase[] possibleCases;
     public PossibleCase[] PossibleCases { get => possibleCases; }
 
+    [SerializeField]
+    PossiblePatient[] possiblePatients;
+    public PossiblePatient[] PossiblePatients { get => possiblePatients; }
+
+    [SerializeField]
+    Level levelToUnlock;
+    public Level LevelToUnlock { get => levelToUnlock; }
+
+
+    public void Unlock()
+    {
+        locked = false;
+    }
 
 
 
+    [System.Serializable]
+    public class PossiblePatient
+    {
+        [SerializeField]
+        GameObject patientPrefab;
+        public GameObject PatientPrefab { get => patientPrefab; }
 
 
+        [SerializeField]
+        [Range(0, 1)]
+        float chanceToAppear;
+        public float ChanceToAppear { get => chanceToAppear; }
 
 
-
+    }
 
     [System.Serializable]
     public class PossibleCase

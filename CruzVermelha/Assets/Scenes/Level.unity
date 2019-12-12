@@ -6294,6 +6294,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8088947180357203107, guid: acb66f7f93723124588bfe2a8c0ab2fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5.7343
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088947180357203107, guid: acb66f7f93723124588bfe2a8c0ab2fd,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 312.92
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb66f7f93723124588bfe2a8c0ab2fd, type: 3}
 --- !u!1001 &723188832
@@ -6718,7 +6728,6 @@ MonoBehaviour:
     type: 2}
   backgroundRenderer: {fileID: 1145023548}
   musicAudioSource: {fileID: 972468577}
-  patientPrefab: {fileID: 0}
   screenPoints:
   - {fileID: 1213168330}
   - {fileID: 1096624125}
@@ -6729,6 +6738,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5f014dcbe3f956149b96665685467601, type: 2}
   nextScreenButton: {fileID: 1493402608}
   backScreenButton: {fileID: 650158941}
+  nextLevelToUnlock: {fileID: 11400000, guid: af9958051a09cf74d8f0de0ca0b96ab1, type: 2}
 --- !u!4 &743114109
 Transform:
   m_ObjectHideFlags: 0
@@ -8202,6 +8212,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Popup (ExaminationComplete)
+      objectReference: {fileID: 0}
+    - target: {fileID: 549572191858018566, guid: 9da63f695107c2a45a754c1d986064b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 549572191858018561, guid: 9da63f695107c2a45a754c1d986064b6,
         type: 3}
@@ -14079,6 +14094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf9886ab60561443bbf870fe963c343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelToUnlock: {fileID: 11400000, guid: af9958051a09cf74d8f0de0ca0b96ab1, type: 2}
 --- !u!4 &1515124949
 Transform:
   m_ObjectHideFlags: 0
@@ -16602,6 +16618,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Popup (CompleteClipboardChecked) '
       objectReference: {fileID: 0}
+    - target: {fileID: 549572191858018566, guid: 9da63f695107c2a45a754c1d986064b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 549572191858018561, guid: 9da63f695107c2a45a754c1d986064b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18444,7 +18465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -145, y: 307}
+  m_AnchoredPosition: {x: -160, y: 353}
   m_SizeDelta: {x: 191, y: 195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1957082116
@@ -18905,6 +18926,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1515124948}
+        m_MethodName: UnlockNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1515124948}
         m_MethodName: LoadLevelSelection
         m_Mode: 1
         m_Arguments:
@@ -18986,7 +19018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 141, y: 307}
+  m_AnchoredPosition: {x: 185, y: 353.00006}
   m_SizeDelta: {x: 191, y: 195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1999741001
