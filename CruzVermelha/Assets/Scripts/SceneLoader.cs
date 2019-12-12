@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField]
+    CurrentLevelReference levelToUnlock;
+
     public void LoadLevel()
     {
         SceneManager.LoadScene(2);
@@ -18,5 +21,13 @@ public class SceneLoader : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void UnlockNextLevel()
+    {
+        if (levelToUnlock.Value != null)
+        {
+            levelToUnlock.Value.Unlock();
+        }
     }
 }

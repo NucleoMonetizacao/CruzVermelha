@@ -30,6 +30,7 @@ public class Case : ScriptableObject
     public bool calledHelp = false;
     public bool policeCalled = false;
     public bool fireDepartmentCalled = false;
+    public bool nobodyCalled = false;
     public bool ambulanceCalled = false;
 
 }

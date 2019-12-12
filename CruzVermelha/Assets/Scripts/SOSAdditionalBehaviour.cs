@@ -7,6 +7,8 @@ public class SOSAdditionalBehaviour : MonoBehaviour
 
     [SerializeField]
     CurrentPatientReference currentPatientReference;
+    [SerializeField]
+    CurrentLevelReference currentLevelReference;
    
 
 
@@ -18,6 +20,9 @@ public class SOSAdditionalBehaviour : MonoBehaviour
 
     [SerializeField]
     Button ambulanceButton;
+
+    [SerializeField]
+    Button nobodyButton;
 
     [SerializeField]
     UnityEvent helpCalledUnityEvent;
@@ -56,6 +61,42 @@ public class SOSAdditionalBehaviour : MonoBehaviour
         {
             policeButton.interactable = true;
         }
+
+
+        if (currentCase.nobodyCalled)
+        {
+            nobodyButton.interactable = false;
+        }
+        else
+        {
+            nobodyButton.interactable = true;
+        }
+        if (currentLevelReference.Value.IsTutorial)
+        {
+            if (currentCase.burnInLeftHand)
+            {
+                nobodyButton.interactable = true;
+                policeButton.interactable = false;
+                fireDepartmentButton.interactable = false;
+                ambulanceButton.interactable = false;
+
+            }
+            else if (currentCase.heartAttack)
+            {
+                nobodyButton.interactable = false;
+                policeButton.interactable = false;
+                fireDepartmentButton.interactable = false;
+                ambulanceButton.interactable = true;
+            }
+            else if (currentCase.choking)
+            {
+                nobodyButton.interactable = false;
+                policeButton.interactable = false;
+                fireDepartmentButton.interactable = false;
+                ambulanceButton.interactable = true;
+            }
+        }
+
     }
 
     public void PlaySOSCalledSound()
@@ -89,6 +130,15 @@ public class SOSAdditionalBehaviour : MonoBehaviour
         x.calledHelp = true;
         x.ambulanceCalled = true;
         ambulanceButton.interactable = false;
+        helpCalledUnityEvent.Invoke();
+    }
+
+    public void CallNobody()
+    {
+        Case x = currentPatientReference.Value.PatientCase;
+        x.calledHelp = true;
+        x.nobodyCalled = true;
+        nobodyButton.interactable = false;
         helpCalledUnityEvent.Invoke();
     }
 }

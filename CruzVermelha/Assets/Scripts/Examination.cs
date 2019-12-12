@@ -1,7 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
+using TMPro;
 
 public class Examination : MonoBehaviour
 {
@@ -10,8 +10,7 @@ public class Examination : MonoBehaviour
 
     [SerializeField]
     GameObject examinationCompleteIcon;
-    [SerializeField]
-    GameObject updatedClipboardIcon;
+
 
     [SerializeField]
     Button returnButton;
@@ -28,6 +27,11 @@ public class Examination : MonoBehaviour
     float examinationCameraSize;
     [SerializeField]
     ControladorCamera controladorCamera;
+
+    [SerializeField]
+    GameObject pointInformationGameObject;
+    [SerializeField]
+    TextMeshProUGUI pointInformationText;
 
 
     [SerializeField]
@@ -47,7 +51,7 @@ public class Examination : MonoBehaviour
     {
         CameraFocus.BackToStartingPositionAndSize();
         returnButton.image.enabled = false;
-        updatedClipboardIcon.SetActive(false);
+        pointInformationGameObject.SetActive(false);
 
     }
 
@@ -121,6 +125,7 @@ public class Examination : MonoBehaviour
 
     public void FocusOnPoint(ExaminationPoint x)
     {
+        pointInformationGameObject.SetActive(true);
         returnButton.image.enabled = true;
         CameraFocus.FocusOnPositionWithSize(new Vector3(x.cameraPosition.x, x.cameraPosition.y, -10), x.cameraSize);
     }
@@ -130,18 +135,18 @@ public class Examination : MonoBehaviour
         rightHandPointButton.image.enabled = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
 
-        if(!patientCase.rightHandExamined)
-        {
-            updatedClipboardIcon.SetActive(true);
-        }
+       
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
 
         patientCase.burn = false;
+        pointInformationText.text = "";
         if (patientCase.burnInLeftHand)
         {
             patientCase.burn = true;
+            
+
         }
 
         patientCase.fractures = false;
@@ -156,18 +161,16 @@ public class Examination : MonoBehaviour
         leftHandPointButton.image.enabled = false;
        Case patientCase = CurrentPatientReference.Value.PatientCase;
 
-        if (!patientCase.leftHandExamined)
-        {
-            updatedClipboardIcon.SetActive(true);
-        }
+
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
-
+        pointInformationText.text = "";
         patientCase.burn = false;
         if(patientCase.burnInLeftHand)
         {
             patientCase.burn = true;
+            pointInformationText.text = "Queimadura";
         }
 
         patientCase.fractures = false;
@@ -181,19 +184,17 @@ public class Examination : MonoBehaviour
         chestPointButton.image.enabled = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
 
-        if (!patientCase.chestExamined)
-        {
-            updatedClipboardIcon.SetActive(true);
-        }
+
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
         patientCase.fractures = false;
-
+        pointInformationText.text = "";
         patientCase.breathing = true;
         if(patientCase.heartAttack)
         {
             patientCase.breathing = false;
+            pointInformationText.text = "Não está respirando";
         }
 
         patientCase.chestExamined = true;
@@ -205,18 +206,16 @@ public class Examination : MonoBehaviour
         headPointButton.image.enabled = false;
         Case patientCase = CurrentPatientReference.Value.PatientCase;
 
-        if (!patientCase.headExamined)
-        {
-            updatedClipboardIcon.SetActive(true);
-        }
+
 
         patientCase.desiresHelp = true;
         patientCase.bleeding = false;
         patientCase.fractures = false;
-
+        pointInformationText.text = "";
         patientCase.breathing = true;
         if (patientCase.heartAttack || patientCase.choking)
         {
+            pointInformationText.text += "Não respirando";
             patientCase.breathing = false;
         }
 
@@ -224,6 +223,7 @@ public class Examination : MonoBehaviour
         if(patientCase.heartAttack)
         {
             patientCase.conciouss = false;
+            pointInformationText.text += "\nInconsciente";
         }
 
 

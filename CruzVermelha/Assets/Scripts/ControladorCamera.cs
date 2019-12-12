@@ -34,6 +34,7 @@ public class ControladorCamera : MonoBehaviour
         indiceLocal = localizacoes.IndexOf(firstLocationTransform);
 
         CreatePatientByScreenPointDictionary();
+        SetCurrentPatientReference();
 
 
 
@@ -59,10 +60,7 @@ public class ControladorCamera : MonoBehaviour
         }
     }
 
-    public Vector3 GetCurrentOffsetFromCurrentAndStartingPoints()
-    {
-        return localizacoes[0].transform.position - localizacoes[indiceLocal].transform.position;
-    }
+
 
 
     void Update()
