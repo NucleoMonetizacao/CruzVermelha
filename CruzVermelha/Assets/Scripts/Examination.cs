@@ -40,6 +40,8 @@ public class Examination : MonoBehaviour
 
     private RepetidorFeedbackSonoro _repetidorFeedbackSonoro;
 
+    public bool AtivaSeta;
+
 
 
     private void Start()
@@ -240,6 +242,7 @@ public class Examination : MonoBehaviour
             patientCase.examinationComplete = true;
             examinationCompleteIcon.SetActive(true);
             ExaminationCompleted.Invoke();
+            AtivaSeta = true;
 
             if (patientCase.choking == true)
             {

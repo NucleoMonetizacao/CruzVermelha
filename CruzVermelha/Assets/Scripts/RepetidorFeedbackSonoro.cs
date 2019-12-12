@@ -27,7 +27,7 @@ public class RepetidorFeedbackSonoro : MonoBehaviour
     {
         if (diagnosticoCompleto == true)
         {
-            NumeroRepeticoes = 5;
+            NumeroRepeticoes = 3;
             StartCoroutine("QuantidadeRepeticoes");
         }
     }
