@@ -17,7 +17,7 @@ public class GameStateMachine : MonoBehaviour
 
     void Awake()
     {
-        SetDictionary();
+        SetGameStateEnumDictionary();
     }
 
 
@@ -36,7 +36,7 @@ public class GameStateMachine : MonoBehaviour
         }
     }
 
-    void SetDictionary()
+    void SetGameStateEnumDictionary()
     {
         stateInMachineByGameStateEnum = new Dictionary<GameStateEnum, StateInMachine>();
         foreach (StateInMachine x in statesInMachine)
@@ -68,15 +68,18 @@ public class GameStateMachine : MonoBehaviour
         public GameState gameState;
 
         public void Enter()
-        { 
-            gameState.gameObject.SetActive(true);
+        {
             gameState.StateEnter();
+            gameState.gameObject.SetActive(true);
+            
         }
 
         public void Exit()
         {
             gameState.gameObject.SetActive(false);
             gameState.StateExit();
+            
+            
         }
     }
 }
