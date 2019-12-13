@@ -14,6 +14,9 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     GameObject levelFailedGameObject;
 
+    [SerializeField]
+    GameObject examineButtonGameObject;
+
 
     [SerializeField]
     Animator phoneDownAnimator;
@@ -27,6 +30,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
         CheckIfLevelIsComplete();
         CheckIfLevelIsFailed();
         CheckIfHealed();
+        CheckExamineButton();
     }
 
     public void PutPhoneDownAnimation()
@@ -79,6 +83,26 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
         else
         {
             minigameChoiceButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void ChangeOfPatient()
+    {
+        CheckIfCanSelectMiniGame();
+        CheckIfHealed();
+        CheckExamineButton();
+
+    }
+
+    void CheckExamineButton()
+    {
+        if(currentPatientReference.Value != null)
+        {
+            examineButtonGameObject.SetActive(true);
+        }
+        else
+        {
+            examineButtonGameObject.SetActive(false);
         }
     }
 
