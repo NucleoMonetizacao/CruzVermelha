@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 
-public class Examination : MonoBehaviour
+public class ExaminationAdditionalBehaviour : MonoBehaviour
 {
     [SerializeField]
     CurrentPatientReference CurrentPatientReference;
@@ -42,7 +42,11 @@ public class Examination : MonoBehaviour
 
     public bool AtivaSeta;
 
-
+    public void StateEnter()
+    {
+        SetPointButtons();
+        SetToExaminationCamera();
+    }
 
     private void Start()
     {

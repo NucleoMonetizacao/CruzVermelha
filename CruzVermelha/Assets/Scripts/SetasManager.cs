@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetasManager : MonoBehaviour
 {
-    private Examination _Examination;
+    private ExaminationAdditionalBehaviour _Examination;
 
     [SerializeField]
     GameObject[] Setas;
@@ -15,7 +15,7 @@ public class SetasManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _Examination = FindObjectOfType(typeof(Examination)) as Examination;
+        _Examination = FindObjectOfType(typeof(ExaminationAdditionalBehaviour)) as ExaminationAdditionalBehaviour;
     }
 
     // Update is called once per frame

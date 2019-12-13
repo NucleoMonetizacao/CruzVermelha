@@ -21,12 +21,20 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     GameObject healedGameObject;
 
+    public void StateEnter()
+    {
+        CheckIfCanSelectMiniGame();
+        CheckIfLevelIsComplete();
+        CheckIfLevelIsFailed();
+        CheckIfHealed();
+    }
+
     public void PutPhoneDownAnimation()
     {
         phoneDownAnimator.Play("PutPhoneDown");
     }
 
-    public void CheckIfHealed()
+    void CheckIfHealed()
     {
         if (currentPatientReference.Value != null)
         {
@@ -45,7 +53,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
         }
     }
     
-    public void CheckIfCanSelectMiniGame()
+    void CheckIfCanSelectMiniGame()
     {
         if (currentPatientReference.Value != null)
         {
@@ -74,7 +82,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
         }
     }
 
-    public void CheckIfLevelIsComplete()
+    void CheckIfLevelIsComplete()
     {
         bool allPatientsHealed = true;
         Patient[] patientsInScene = FindObjectsOfType<Patient>();
@@ -91,7 +99,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
         }
     }
 
-    public void CheckIfLevelIsFailed()
+     void CheckIfLevelIsFailed()
     {
         bool onePatientDead = false;
         Patient[] patientsInScene = FindObjectsOfType<Patient>();
@@ -99,11 +107,13 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
         {
             if (patientsInScene[i].PatientCase.isDead)
             {
+               
                 onePatientDead = true;
             }
         }
         if (onePatientDead)
         {
+           
             levelFailedGameObject.SetActive(true);
         }
     }

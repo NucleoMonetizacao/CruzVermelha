@@ -15,7 +15,7 @@ public class PhoneScreenDirector : MonoBehaviour
     [SerializeField]
     GameObject ClipboardPhoneScreen;
     [SerializeField]
-    ClipboardUI ClipboardDirector;
+    ClipboardAdditionalBehaviour ClipboardDirector;
 
 
 

@@ -70,6 +70,7 @@ public class RCPAdditionalBehaviour : MonoBehaviour
         Case x = currentPatient.Value.PatientCase;
         if(x.heartAttack)
         {
+
             x.isDead = true;
         }
     }

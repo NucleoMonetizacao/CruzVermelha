@@ -11,12 +11,18 @@ public class HomeAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    public void StateEnter()
+    {
+        CheckIfSOSButtonIsInteractable();
+        PlayHomeSound();
+    }
+
     public void PlayPhoneUpAnimation()
     {
         anim.Play("PhoneUp");
     }
 
-    public void CheckIfSOSButtonIsInteractable()
+    private void CheckIfSOSButtonIsInteractable()
     {
         if (currentPatientReference.Value != null)
         {
@@ -35,7 +41,7 @@ public class HomeAdditionalBehaviour : MonoBehaviour
         }
     }
 
-    public void PlayHomeSound()
+    private void PlayHomeSound()
     {
         AudioPlayer.PlaySound(0);
     }
