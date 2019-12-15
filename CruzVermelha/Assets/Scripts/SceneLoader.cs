@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField]
-    CurrentLevelReference levelToUnlock;
+    CurrentLevelReference currentLevelReference;
 
     public void LoadLevel()
     {
@@ -25,9 +25,10 @@ public class SceneLoader : MonoBehaviour
 
     public void UnlockNextLevel()
     {
-        if (levelToUnlock.Value != null)
+        int currentLevelIndex = PlayerPrefs.GetInt("CurrentLevelIndex");
+        if (currentLevelIndex == currentLevelReference.Value.LevelIndex)
         {
-            levelToUnlock.Value.Unlock();
+            PlayerPrefs.SetInt("CurrentLevelIndex", currentLevelIndex + 1);
         }
     }
 }

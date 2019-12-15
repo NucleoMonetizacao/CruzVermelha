@@ -110,6 +110,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     {
         bool allPatientsHealed = true;
         Patient[] patientsInScene = FindObjectsOfType<Patient>();
+     
         for (int i = 0; i < patientsInScene.Length; i++)
         {
             if(patientsInScene[i].PatientCase.isHealed == false)

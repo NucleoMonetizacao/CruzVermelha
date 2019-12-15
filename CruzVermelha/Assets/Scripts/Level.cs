@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Level")]
 public class Level : ScriptableObject
 {
+
     [SerializeField]
-    bool locked = true;
-    public bool Locked { get => locked; }
+    int levelIndex;
+    public int LevelIndex { get => levelIndex; }
 
     [SerializeField]
     Sprite backgroundImage;
@@ -42,15 +43,8 @@ public class Level : ScriptableObject
     PossiblePatient[] possiblePatients;
     public PossiblePatient[] PossiblePatients { get => possiblePatients; }
 
-    [SerializeField]
-    Level levelToUnlock;
-    public Level LevelToUnlock { get => levelToUnlock; }
 
 
-    public void Unlock()
-    {
-        locked = false;
-    }
 
 
 

@@ -11,11 +11,13 @@ public class LevelSelectionButton : MonoBehaviour
     GameObject lockGameObject;
     [SerializeField]
     Button levelButton;
+    public bool locked;
 
 
-    private void Start()
+    public void Initialize(bool locked_)
     {
-        if(level.Locked)
+        locked = locked_;
+        if(locked)
         {
             lockGameObject.SetActive(true);
             levelButton.interactable = false;

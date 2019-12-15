@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd70544b68be7b941984d3cf7734e67f, type: 3}
-  m_Name: Level5 (Shopping)
+  m_Name: Level3 (Shopping)
   m_EditorClassIdentifier: 
-  locked: 1
+  levelIndex: 3
   backgroundImage: {fileID: 21300000, guid: 37e37aa6db2125b4798d6665b841fdb5, type: 3}
   musicClip: {fileID: 8300000, guid: f7c329c3df308d1419741c6e8c61815f, type: 3}
   isTutorial: 0
   numberOfLocations: 3
-  numberOfPatients: 3
+  numberOfPatients: 2
   possibleCases:
   - caseTemplate: {fileID: 11400000, guid: d15a1ad6f549d714294a73aef61784ab, type: 2}
     chanceToAppear: 0.33
@@ -35,4 +35,3 @@ MonoBehaviour:
   - patientPrefab: {fileID: 8188047655779461181, guid: 72ef2fd0babed5b4ebc1163abee2e3c5,
       type: 3}
     chanceToAppear: 0.34
-  levelToUnlock: {fileID: 0}

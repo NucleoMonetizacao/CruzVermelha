@@ -57,8 +57,7 @@ public class LevelInitializator : MonoBehaviour
         SetTutorial();
 
         EditorTests();
-        nextLevelToUnlock.SetValueTo(currentLevel.LevelToUnlock);
-
+  
 
     }
 
