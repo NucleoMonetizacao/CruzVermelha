@@ -8,29 +8,65 @@ public class TutorialElement : MonoBehaviour
     BoolReference boolToActivate;
 
     [SerializeField]
+    Level levelCondition;
+    [SerializeField]
+    CurrentLevelReference currentLevelReference;
+
+    [SerializeField]
     bool pauseTimeWhileActive = false;
 
     public void CheckIfActive()
     {
-            if (boolToActivate)
+        bool activate = false;
+
+        if (boolToActivate)
+        {
+            if (boolToActivate.value == true)
             {
-                if (boolToActivate.value == true)
-                {
-                    Activate();
-                }
-                else
-                {
-                    gameObject.SetActive(false);
-                }
+                activate = true; 
             }
             else
             {
-                Activate();
+                activate = false;
             }
+        }
+        else
+        {
+            activate = true;
+        }
+
+        if (activate)
+        {
+            if (levelCondition == null) 
+            {
+                activate = true;
+            }
+            else 
+            {
+                if (levelCondition == currentLevelReference.Value)
+                {
+                    activate = true;
+                }
+                else
+                {
+                    activate = false;
+                }
+            }
+        }
+
+        if (activate)
+        {
+            Activate();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void Activate()
     {
+        
         gameObject.SetActive(true);
         if(pauseTimeWhileActive)
         {
