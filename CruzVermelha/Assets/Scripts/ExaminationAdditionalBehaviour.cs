@@ -6,7 +6,9 @@ using TMPro;
 public class ExaminationAdditionalBehaviour : MonoBehaviour
 {
     [SerializeField]
-    CurrentPatientReference CurrentPatientReference;
+    CurrentPatientReference currentPatientReference;
+    [SerializeField]
+    CurrentLevelReference currentLevelReference;
 
     [SerializeField]
     GameObject examinationCompleteIcon;
@@ -44,8 +46,40 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
     public void StateEnter()
     {
+        SetTutorialPoints();
         SetPointButtons();
         SetToExaminationCamera();
+    }
+
+    void SetTutorialPoints()
+    {
+        if(currentLevelReference.Value.IsTutorial)
+        {
+            Case x = currentPatientReference.Value.PatientCase;
+            if(!x.examinationComplete)
+            {
+                if(x.burnInLeftHand)
+                {
+                    x.rightHandExamined = true;
+                    x.headExamined = true;
+                    x.chestExamined = true;
+                    
+                }
+                else if(x.heartAttack)
+                {
+                    x.leftHandExamined = true;
+                    x.rightHandExamined = true;
+                    x.burn = false;
+                }
+                else if(x.choking)
+                {
+                    x.chestExamined = true;
+                    x.leftHandExamined = true;
+                    x.rightHandExamined = true;
+                    x.burn = false;
+                }
+            }
+        }
     }
 
     private void Start()
@@ -78,7 +112,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
     public void SetPointButtons()
     {
-        Case x = CurrentPatientReference.Value.PatientCase;
+        Case x = currentPatientReference.Value.PatientCase;
 
         if(x.examinationComplete)
         {
@@ -139,7 +173,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     public void FocusOnRightHand()
     {
         rightHandPointButton.image.enabled = false;
-        Case patientCase = CurrentPatientReference.Value.PatientCase;
+        Case patientCase = currentPatientReference.Value.PatientCase;
 
        
 
@@ -165,7 +199,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     public void FocusOnLeftHand()
     {
         leftHandPointButton.image.enabled = false;
-       Case patientCase = CurrentPatientReference.Value.PatientCase;
+       Case patientCase = currentPatientReference.Value.PatientCase;
 
 
 
@@ -188,7 +222,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     public void FocusOnChest()
     {
         chestPointButton.image.enabled = false;
-        Case patientCase = CurrentPatientReference.Value.PatientCase;
+        Case patientCase = currentPatientReference.Value.PatientCase;
 
 
 
@@ -210,7 +244,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     public void FocusOnHead()
     {
         headPointButton.image.enabled = false;
-        Case patientCase = CurrentPatientReference.Value.PatientCase;
+        Case patientCase = currentPatientReference.Value.PatientCase;
 
 
 

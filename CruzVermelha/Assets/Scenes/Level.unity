@@ -16971,7 +16971,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821c1a6434374ed46aa28ce05988faf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPatientReference: {fileID: 11400000, guid: 0c59f927139d5e544804b992a59e251e,
+  currentPatientReference: {fileID: 11400000, guid: 0c59f927139d5e544804b992a59e251e,
+    type: 2}
+  currentLevelReference: {fileID: 11400000, guid: f4e970caf9af4654ca23af28b3b610a1,
     type: 2}
   examinationCompleteIcon: {fileID: 43070251}
   returnButton: {fileID: 1263316302}
