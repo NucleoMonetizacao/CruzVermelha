@@ -10,12 +10,16 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     CurrentLevelReference currentLevelReference;
 
+    Case currentCase;
+
     [SerializeField]
     GameObject examinationCompleteIcon;
 
 
     [SerializeField]
     Button returnButton;
+    [SerializeField]
+    GameObject finishExaminationButtonGameObject;
 
     [SerializeField]
     Button rightHandPointButton;
@@ -46,8 +50,14 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
     public void StateEnter()
     {
+        currentCase = currentPatientReference.Value.PatientCase;
+
         SetTutorialPoints();
-        SetPointButtons();
+        SetExaminationCompleteIcon();
+        DisableAllExaminationPointsButtonImage();
+        Invoke("SetPointButton", 0.3f);
+      
+
         SetToExaminationCamera();
     }
 
@@ -55,29 +65,36 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     {
         if(currentLevelReference.Value.IsTutorial)
         {
-            Case x = currentPatientReference.Value.PatientCase;
-            if(!x.examinationComplete)
+            
+            
+
+            if(!currentCase.examinationComplete)
             {
-                if(x.burnInLeftHand)
+                finishExaminationButtonGameObject.SetActive(false);
+                if (currentCase.burnInLeftHand)
                 {
-                    x.rightHandExamined = true;
-                    x.headExamined = true;
-                    x.chestExamined = true;
+                    currentCase.rightHandExamined = true;
+                    currentCase.headExamined = true;
+                    currentCase.chestExamined = true;
                     
                 }
-                else if(x.heartAttack)
+                else if(currentCase.heartAttack)
                 {
-                    x.leftHandExamined = true;
-                    x.rightHandExamined = true;
-                    x.burn = false;
+                    currentCase.leftHandExamined = true;
+                    currentCase.rightHandExamined = true;
+                    currentCase.burn = false;
                 }
-                else if(x.choking)
+                else if(currentCase.choking)
                 {
-                    x.chestExamined = true;
-                    x.leftHandExamined = true;
-                    x.rightHandExamined = true;
-                    x.burn = false;
+                    currentCase.chestExamined = true;
+                    currentCase.leftHandExamined = true;
+                    currentCase.rightHandExamined = true;
+                    currentCase.burn = false;
                 }
+            }
+            else
+            {
+                finishExaminationButtonGameObject.SetActive(true);
             }
         }
     }
@@ -89,11 +106,14 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
     public void BackToDefaultCameraPosition()
     {
+        Invoke("SetPointButtons", 0.5f);
         CameraFocus.BackToStartingPositionAndSize();
         returnButton.image.enabled = false;
         pointInformationGameObject.SetActive(false);
 
+
     }
+
 
     public void SetControladorCameraTo(bool x)
     {
@@ -102,6 +122,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
     public void CameraFocusBackToStartingPositionAndSize()
     {
+        
         CameraFocus.BackToStartingPositionAndSize();
     }
 
@@ -110,11 +131,9 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         CameraFocus.FocusOnPositionWithSize(Camera.main.transform.localPosition, examinationCameraSize);
     }
 
-    public void SetPointButtons()
+    void SetExaminationCompleteIcon()
     {
-        Case x = currentPatientReference.Value.PatientCase;
-
-        if(x.examinationComplete)
+        if (currentCase.examinationComplete)
         {
             examinationCompleteIcon.SetActive(true);
         }
@@ -123,11 +142,14 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
             examinationCompleteIcon.SetActive(false);
 
         }
-        
-        
+    }
+
+    public void SetPointButtons()
+    {
 
 
-        if (x.chestExamined)
+
+        if (currentCase.chestExamined)
         {
             chestPointButton.image.enabled = false;
             
@@ -136,7 +158,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         {
             chestPointButton.image.enabled  = true;
         }
-        if (x.leftHandExamined)
+        if (currentCase.leftHandExamined)
         {
             leftHandPointButton.image.enabled  = false;
         }
@@ -144,7 +166,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         {
             leftHandPointButton.image.enabled  = true;
         }
-        if (x.rightHandExamined)
+        if (currentCase.rightHandExamined)
         {
             rightHandPointButton.image.enabled  = false;
         }
@@ -152,7 +174,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         {
             rightHandPointButton.image.enabled = true;
         }
-        if (x.headExamined)
+        if (currentCase.headExamined)
         {
             headPointButton.image.enabled = false;
         }
@@ -163,8 +185,19 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         
     }
 
+    private void DisableAllExaminationPointsButtonImage()
+    {
+        rightHandPointButton.image.enabled = false;
+        leftHandPointButton.image.enabled = false;
+        headPointButton.image.enabled = false;
+        chestPointButton.image.enabled = false;
+    }
+
+  
+
     public void FocusOnPoint(ExaminationPoint x)
     {
+        DisableAllExaminationPointsButtonImage();
         pointInformationGameObject.SetActive(true);
         returnButton.image.enabled = true;
         CameraFocus.FocusOnPositionWithSize(new Vector3(x.cameraPosition.x, x.cameraPosition.y, -10), x.cameraSize);
@@ -173,103 +206,101 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     public void FocusOnRightHand()
     {
         rightHandPointButton.image.enabled = false;
-        Case patientCase = currentPatientReference.Value.PatientCase;
 
        
 
-        patientCase.desiresHelp = true;
-        patientCase.bleeding = false;
+        currentCase.desiresHelp = true;
+        currentCase.bleeding = false;
 
-        patientCase.burn = false;
+        currentCase.burn = false;
         pointInformationText.text = "";
-        if (patientCase.burnInLeftHand)
+        if (currentCase.burnInLeftHand)
         {
-            patientCase.burn = true;
+            currentCase.burn = true;
             
 
         }
 
-        patientCase.fractures = false;
+        currentCase.fractures = false;
 
-        patientCase.rightHandExamined = true;
-        CheckIfComplete(patientCase);
+        currentCase.rightHandExamined = true;
+        CheckIfComplete(currentCase);
 
     }
 
     public void FocusOnLeftHand()
     {
         leftHandPointButton.image.enabled = false;
-       Case patientCase = currentPatientReference.Value.PatientCase;
 
 
 
-        patientCase.desiresHelp = true;
-        patientCase.bleeding = false;
+        currentCase.desiresHelp = true;
+        currentCase.bleeding = false;
         pointInformationText.text = "";
-        patientCase.burn = false;
-        if(patientCase.burnInLeftHand)
+        currentCase.burn = false;
+        if(currentCase.burnInLeftHand)
         {
-            patientCase.burn = true;
+            currentCase.burn = true;
             pointInformationText.text = "Queimadura";
         }
 
-        patientCase.fractures = false;
+        currentCase.fractures = false;
 
-        patientCase.leftHandExamined = true;
-        CheckIfComplete(patientCase);
+        currentCase.leftHandExamined = true;
+        CheckIfComplete(currentCase);
     }
 
     public void FocusOnChest()
     {
         chestPointButton.image.enabled = false;
-        Case patientCase = currentPatientReference.Value.PatientCase;
 
 
 
-        patientCase.desiresHelp = true;
-        patientCase.bleeding = false;
-        patientCase.fractures = false;
+
+        currentCase.desiresHelp = true;
+        currentCase.bleeding = false;
+        currentCase.fractures = false;
         pointInformationText.text = "";
-        patientCase.breathing = true;
-        if(patientCase.heartAttack)
+        currentCase.breathing = true;
+        if(currentCase.heartAttack)
         {
-            patientCase.breathing = false;
+            currentCase.breathing = false;
             pointInformationText.text = "Não está respirando";
         }
 
-        patientCase.chestExamined = true;
-        CheckIfComplete(patientCase);
+        currentCase.chestExamined = true;
+        CheckIfComplete(currentCase);
     }
 
     public void FocusOnHead()
     {
         headPointButton.image.enabled = false;
-        Case patientCase = currentPatientReference.Value.PatientCase;
+     
 
 
 
-        patientCase.desiresHelp = true;
-        patientCase.bleeding = false;
-        patientCase.fractures = false;
+        currentCase.desiresHelp = true;
+        currentCase.bleeding = false;
+        currentCase.fractures = false;
         pointInformationText.text = "";
-        patientCase.breathing = true;
-        if (patientCase.heartAttack || patientCase.choking)
+        currentCase.breathing = true;
+        if (currentCase.heartAttack || currentCase.choking)
         {
             pointInformationText.text += "Não respirando";
-            patientCase.breathing = false;
+            currentCase.breathing = false;
         }
 
-        patientCase.conciouss = true;
-        if(patientCase.heartAttack)
+        currentCase.conciouss = true;
+        if(currentCase.heartAttack)
         {
-            patientCase.conciouss = false;
+            currentCase.conciouss = false;
             pointInformationText.text += "\nInconsciente";
         }
 
 
-        patientCase.headExamined = true;
+        currentCase.headExamined = true;
 
-        CheckIfComplete(patientCase);
+        CheckIfComplete(currentCase);
    
     }
 
@@ -277,6 +308,11 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     {
         if (patientCase.headExamined && patientCase.leftHandExamined && patientCase.rightHandExamined && patientCase.chestExamined)
         {
+            if(currentLevelReference.Value.IsTutorial)
+            {
+                finishExaminationButtonGameObject.SetActive(true);
+            }
+
             patientCase.examinationComplete = true;
             examinationCompleteIcon.SetActive(true);
             ExaminationCompleted.Invoke();

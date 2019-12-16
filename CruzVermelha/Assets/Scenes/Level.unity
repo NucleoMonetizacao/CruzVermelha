@@ -1850,7 +1850,7 @@ GameObject:
   - component: {fileID: 196402653}
   - component: {fileID: 196402652}
   m_Layer: 5
-  m_Name: EndExaminationButton
+  m_Name: FinishExaminationButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7275,7 +7275,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.50000006, y: 0.50000006, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2046855453}
   m_Father: {fileID: 1687306291}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16654,7 +16655,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 749832845}
-  - {fileID: 2046855453}
   m_Father: {fileID: 1260029555}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16721,7 +16721,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 52228727
-  m_SortingOrder: 3
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!1 &1712951568 stripped
 GameObject:
@@ -16977,6 +16977,7 @@ MonoBehaviour:
     type: 2}
   examinationCompleteIcon: {fileID: 43070251}
   returnButton: {fileID: 1263316302}
+  finishExaminationButtonGameObject: {fileID: 196402650}
   rightHandPointButton: {fileID: 442424823}
   leftHandPointButton: {fileID: 411385286}
   chestPointButton: {fileID: 1632510789}
@@ -20323,18 +20324,18 @@ RectTransform:
   m_GameObject: {fileID: 2046855452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8390112, y: 0.8390112, z: 1.6675649}
+  m_LocalScale: {x: 1.6780223, y: 1.6780223, z: 1.6675647}
   m_Children:
   - {fileID: 2146402061}
   - {fileID: 1178640980}
   - {fileID: 1268059974}
   - {fileID: 695717425}
-  m_Father: {fileID: 1687306291}
-  m_RootOrder: 1
+  m_Father: {fileID: 749832845}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: 297.35394}
   m_SizeDelta: {x: 900, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046855454
