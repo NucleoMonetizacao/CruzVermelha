@@ -22,7 +22,7 @@ public class SetasManager : MonoBehaviour
   
     public void AtivarSetaDiagnostico(int idSetas)
     {
-        if (_Examination.AtivaSeta == true)
+        if (AtivaSeta == true)
         {
             Setas[idSetas].SetActive(true);
         }

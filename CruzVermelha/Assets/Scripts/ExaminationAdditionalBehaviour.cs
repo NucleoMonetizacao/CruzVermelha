@@ -41,8 +41,9 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
 
     private RepetidorFeedbackSonoro _repetidorFeedbackSonoro;
+    private SetasManager _SetasManager;
 
-    public bool AtivaSeta;
+    
 
     public void StateEnter()
     {
@@ -85,6 +86,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
     private void Start()
     {
         _repetidorFeedbackSonoro = FindObjectOfType(typeof(RepetidorFeedbackSonoro)) as RepetidorFeedbackSonoro;
+        _SetasManager = FindObjectOfType(typeof(SetasManager)) as SetasManager;
     }
 
     public void BackToDefaultCameraPosition()
@@ -280,7 +282,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
             patientCase.examinationComplete = true;
             examinationCompleteIcon.SetActive(true);
             ExaminationCompleted.Invoke();
-            AtivaSeta = true;
+            _SetasManager.AtivaSeta = true;
 
             if (patientCase.choking == true)
             {
