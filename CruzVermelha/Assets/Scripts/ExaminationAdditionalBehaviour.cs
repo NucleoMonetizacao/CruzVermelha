@@ -55,7 +55,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         SetTutorialPoints();
         SetExaminationCompleteIcon();
         DisableAllExaminationPointsButtonImage();
-        Invoke("SetPointButton", 0.3f);
+        SetPointButtons();
       
 
         SetToExaminationCamera();
@@ -76,6 +76,8 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
                     currentCase.rightHandExamined = true;
                     currentCase.headExamined = true;
                     currentCase.chestExamined = true;
+                    currentCase.breathing = true;
+                    currentCase.conciouss = true;
                     
                 }
                 else if(currentCase.heartAttack)
@@ -83,6 +85,8 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
                     currentCase.leftHandExamined = true;
                     currentCase.rightHandExamined = true;
                     currentCase.burn = false;
+                    currentCase.breathing = true;
+                    currentCase.conciouss = true;
                 }
                 else if(currentCase.choking)
                 {
