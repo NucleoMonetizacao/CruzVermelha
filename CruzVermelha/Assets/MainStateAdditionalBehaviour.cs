@@ -8,6 +8,8 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     CurrentPatientReference currentPatientReference;
     [SerializeField]
+    CurrentLevelReference currentLevelReference;
+    [SerializeField]
     Button minigameChoiceButton;
     [SerializeField]
     GameObject levelCompleteGameObject;
@@ -66,7 +68,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
 
             if (!currentPatientCase.isHealed)
             {
-                if (currentPatientCase.completeClipboardChecked && currentPatientCase.calledHelp)
+                if ((currentPatientCase.completeClipboardChecked || !currentLevelReference.Value.IsTutorial) && currentPatientCase.calledHelp)
                 {
                     minigameChoiceButton.gameObject.SetActive(true);
                 }

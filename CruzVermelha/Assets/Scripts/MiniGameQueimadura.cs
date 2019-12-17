@@ -31,6 +31,7 @@ public class MiniGameQueimadura : MonoBehaviour
     public void StartMinigame()
     {
         player.transform.position = playerPosicaoInicial;
+        txtResultadoMiniGame.text = " ";
     }
 
 
@@ -42,7 +43,7 @@ public class MiniGameQueimadura : MonoBehaviour
 
     public void DropPlayer()
     {
-        StopCoroutine("LimpaResposta");
+        StopCoroutine("LimpaRespostaC");
         float Distance = Vector3.Distance(player.transform.localPosition, pia.transform.localPosition);
         if(Distance<50)
         {
@@ -70,9 +71,14 @@ public class MiniGameQueimadura : MonoBehaviour
         }
     }
 
-    IEnumerator LimpaResposta()
+    IEnumerator LimpaRespostaC()
     {
         yield return new WaitForSeconds(2);
+        LimpaResposta();
+    }
+
+    private void LimpaResposta()
+    {
         txtResultadoMiniGame.text = " ";
     }
 

@@ -7,6 +7,8 @@ public class HomeAdditionalBehaviour : MonoBehaviour
     [SerializeField]
     CurrentPatientReference currentPatientReference;
     [SerializeField]
+    CurrentLevelReference currentLevelReference;
+    [SerializeField]
     Button SOSButton;
     [SerializeField]
     Animator anim;
@@ -26,7 +28,7 @@ public class HomeAdditionalBehaviour : MonoBehaviour
     {
         if (currentPatientReference.Value != null)
         {
-            if (currentPatientReference.Value.PatientCase.completeClipboardChecked)
+            if (currentPatientReference.Value.PatientCase.completeClipboardChecked || !currentLevelReference.Value.IsTutorial)
             {
                 SOSButton.interactable = true;
             }

@@ -10,7 +10,7 @@ public class LevelSelectionDirector : MonoBehaviour
     [SerializeField]
     LevelSelectionButton[] levelSelecionButtons;
 
-    private void Start()
+    private void Awake()
     {
         SetUnlockedLevelsByPlayerPrefs();
     }
