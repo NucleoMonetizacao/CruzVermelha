@@ -9,7 +9,7 @@ public class SetasManager : MonoBehaviour
     [SerializeField]
     GameObject[] Setas;
 
-    
+    public bool AtivaSeta;
     
 
     // Start is called before the first frame update
