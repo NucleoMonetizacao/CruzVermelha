@@ -24,10 +24,12 @@ public class GameStateMachine : MonoBehaviour
 
     void Start()
     {
+        
         foreach (StateInMachine x in statesInMachine)
         {
             x.Exit();
         }
+        
         if (startingState)
         {
            

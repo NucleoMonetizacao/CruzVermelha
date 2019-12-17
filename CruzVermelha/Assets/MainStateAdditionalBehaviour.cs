@@ -68,7 +68,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
 
             if (!currentPatientCase.isHealed)
             {
-                if ((currentPatientCase.completeClipboardChecked || !currentLevelReference.Value.IsTutorial) && currentPatientCase.calledHelp)
+                if (((currentPatientCase.completeClipboardChecked || (!currentLevelReference.Value.IsTutorial && currentPatientCase.examinationComplete)) && currentPatientCase.calledHelp))
                 {
                     minigameChoiceButton.gameObject.SetActive(true);
                 }
@@ -87,6 +87,7 @@ public class MainStateAdditionalBehaviour : MonoBehaviour
             minigameChoiceButton.gameObject.SetActive(false);
         }
     }
+
 
     public void ChangeOfPatient()
     {

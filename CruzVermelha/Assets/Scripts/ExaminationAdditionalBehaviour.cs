@@ -53,9 +53,18 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         currentCase = currentPatientReference.Value.PatientCase;
 
         SetTutorialPoints();
-        SetExaminationCompleteIcon();
+        if (currentLevelReference.Value.IsTutorial)
+        {
+            SetExaminationCompleteIcon();
+        }
+        else
+        {
+            currentPatientReference.Value.PatientCase.examinationComplete = true;
+            examinationCompleteIcon.SetActive(false);
+        }
         DisableAllExaminationPointsButtonImage();
         SetPointButtons();
+    
       
 
         SetToExaminationCamera();
@@ -137,7 +146,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
     void SetExaminationCompleteIcon()
     {
-        if (currentCase.examinationComplete)
+        if (currentCase.examinationComplete && currentLevelReference.Value.IsTutorial)
         {
             examinationCompleteIcon.SetActive(true);
         }
@@ -315,10 +324,15 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
             if(currentLevelReference.Value.IsTutorial)
             {
                 finishExaminationButtonGameObject.SetActive(true);
+                examinationCompleteIcon.SetActive(true);
+            }
+            else
+            {
+                examinationCompleteIcon.SetActive(false);
             }
 
             patientCase.examinationComplete = true;
-            examinationCompleteIcon.SetActive(true);
+            
             ExaminationCompleted.Invoke();
             AtivaSeta = true;
 

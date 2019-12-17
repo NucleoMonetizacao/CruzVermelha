@@ -18,6 +18,8 @@ public class MiniGameQueimadura : MonoBehaviour
 
     [SerializeField]
     UnityEvent SucessUnityEvent;
+    [SerializeField]
+    UnityEvent WrongChoiceUnityEvent;
 
     
 
@@ -31,7 +33,6 @@ public class MiniGameQueimadura : MonoBehaviour
     public void StartMinigame()
     {
         player.transform.position = playerPosicaoInicial;
-        txtResultadoMiniGame.text = " ";
     }
 
 
@@ -49,14 +50,21 @@ public class MiniGameQueimadura : MonoBehaviour
         {
             player.transform.localPosition = pia.transform.localPosition;
             txtResultadoMiniGame.text = "Você tratou corretamente a queimadura";
-            SucessUnityEvent.Invoke();
+            if (currentPatientReference.Value.PatientCase.burnInLeftHand)
+            {
+                SucessUnityEvent.Invoke();
+            }
+            else
+            {
+                WrongChoiceUnityEvent.Invoke();
+            }
 
         }
         else
         {
             player.transform.position = playerPosicaoInicial;
             txtResultadoMiniGame.text = "Este não é o local correto para tratar uma queimadura";
-            StartCoroutine("LimpaResposta");
+            StartCoroutine("LimpaRespostaC");
         }
     }
 
