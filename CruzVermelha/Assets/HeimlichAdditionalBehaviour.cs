@@ -15,6 +15,8 @@ public class HeimlichAdditionalBehaviour : MonoBehaviour
     UnityEvent SucessUnityEvent;
     [SerializeField]
     UnityEvent FailureUnityEvent;
+    [SerializeField]
+    UnityEvent WrongChoiceUnityEvent;
 
     public void StartListeningToPointerEvents()
     {
@@ -31,12 +33,32 @@ public class HeimlichAdditionalBehaviour : MonoBehaviour
 
     private void SucessEventHandler()
     {
-        SucessUnityEvent.Invoke();
+        if (currentPatientReference.Value.PatientCase.choking == true)
+        {
+            SucessUnityEvent.Invoke();
+        }
+        else
+        {
+            WrongChoiceUnityEvent.Invoke();
+        }
+    }
+
+    private void WrongChoiceMiniGameEnd()
+    {
+        WrongChoiceUnityEvent.Invoke();
     }
 
     private void FailureEventHandler()
     {
-        FailureUnityEvent.Invoke();
+        if (currentPatientReference.Value.PatientCase.choking == true)
+        {
+            FailureUnityEvent.Invoke();
+        }
+        else
+        {
+            WrongChoiceUnityEvent.Invoke();
+        }
+       
     }
 
     public void CureChocking()

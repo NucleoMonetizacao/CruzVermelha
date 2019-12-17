@@ -118,6 +118,7 @@ public class LevelInitializator : MonoBehaviour
     private void SetLevelBackground()
     {
         backgroundRenderer.sprite = currentLevel.BackgroundImage;
+        backgroundRenderer.transform.position += currentLevel.AddToBackgroundPosition;
     }
 
     private void SetMusic()

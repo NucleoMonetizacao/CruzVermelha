@@ -13,6 +13,10 @@ public class Level : ScriptableObject
     [SerializeField]
     Sprite backgroundImage;
     public Sprite BackgroundImage { get => backgroundImage; }
+    [SerializeField]
+    Vector3 addToBackgroundPosition;
+    public Vector3 AddToBackgroundPosition { get => addToBackgroundPosition; }
+
 
     [SerializeField]
     AudioClip musicClip;

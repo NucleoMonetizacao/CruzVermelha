@@ -18,6 +18,8 @@ public class MiniGameQueimadura : MonoBehaviour
 
     [SerializeField]
     UnityEvent SucessUnityEvent;
+    [SerializeField]
+    UnityEvent WrongChoiceUnityEvent;
 
     
 
@@ -42,20 +44,27 @@ public class MiniGameQueimadura : MonoBehaviour
 
     public void DropPlayer()
     {
-        StopCoroutine("LimpaResposta");
+        StopCoroutine("LimpaRespostaC");
         float Distance = Vector3.Distance(player.transform.localPosition, pia.transform.localPosition);
         if(Distance<50)
         {
             player.transform.localPosition = pia.transform.localPosition;
             txtResultadoMiniGame.text = "Você tratou corretamente a queimadura";
-            SucessUnityEvent.Invoke();
+            if (currentPatientReference.Value.PatientCase.burnInLeftHand)
+            {
+                SucessUnityEvent.Invoke();
+            }
+            else
+            {
+                WrongChoiceUnityEvent.Invoke();
+            }
 
         }
         else
         {
             player.transform.position = playerPosicaoInicial;
             txtResultadoMiniGame.text = "Este não é o local correto para tratar uma queimadura";
-            StartCoroutine("LimpaResposta");
+            StartCoroutine("LimpaRespostaC");
         }
     }
 
@@ -70,9 +79,14 @@ public class MiniGameQueimadura : MonoBehaviour
         }
     }
 
-    IEnumerator LimpaResposta()
+    IEnumerator LimpaRespostaC()
     {
         yield return new WaitForSeconds(2);
+        LimpaResposta();
+    }
+
+    private void LimpaResposta()
+    {
         txtResultadoMiniGame.text = " ";
     }
 

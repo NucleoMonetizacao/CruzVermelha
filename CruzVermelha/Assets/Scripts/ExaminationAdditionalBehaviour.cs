@@ -54,9 +54,18 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
         currentCase = currentPatientReference.Value.PatientCase;
 
         SetTutorialPoints();
-        SetExaminationCompleteIcon();
+        if (currentLevelReference.Value.IsTutorial)
+        {
+            SetExaminationCompleteIcon();
+        }
+        else
+        {
+            currentPatientReference.Value.PatientCase.examinationComplete = true;
+            examinationCompleteIcon.SetActive(false);
+        }
         DisableAllExaminationPointsButtonImage();
-        Invoke("SetPointButton", 0.3f);
+        SetPointButtons();
+    
       
 
         SetToExaminationCamera();
@@ -77,6 +86,8 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
                     currentCase.rightHandExamined = true;
                     currentCase.headExamined = true;
                     currentCase.chestExamined = true;
+                    currentCase.breathing = true;
+                    currentCase.conciouss = true;
                     
                 }
                 else if(currentCase.heartAttack)
@@ -84,6 +95,8 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
                     currentCase.leftHandExamined = true;
                     currentCase.rightHandExamined = true;
                     currentCase.burn = false;
+                    currentCase.breathing = true;
+                    currentCase.conciouss = true;
                 }
                 else if(currentCase.choking)
                 {
@@ -135,7 +148,7 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
 
     void SetExaminationCompleteIcon()
     {
-        if (currentCase.examinationComplete)
+        if (currentCase.examinationComplete && currentLevelReference.Value.IsTutorial)
         {
             examinationCompleteIcon.SetActive(true);
         }
@@ -313,10 +326,15 @@ public class ExaminationAdditionalBehaviour : MonoBehaviour
             if(currentLevelReference.Value.IsTutorial)
             {
                 finishExaminationButtonGameObject.SetActive(true);
+                examinationCompleteIcon.SetActive(true);
+            }
+            else
+            {
+                examinationCompleteIcon.SetActive(false);
             }
 
             patientCase.examinationComplete = true;
-            examinationCompleteIcon.SetActive(true);
+            
             ExaminationCompleted.Invoke();
             _SetasManager.AtivaSeta = true;
 

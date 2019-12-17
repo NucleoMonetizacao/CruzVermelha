@@ -15,6 +15,8 @@ public class RCPAdditionalBehaviour : MonoBehaviour
     UnityEvent sucessUnityEvent;
     [SerializeField]
     UnityEvent failureUnityEvent;
+    [SerializeField]
+    UnityEvent wrongChoiceUnityEvent;
 
     public void DisablePatient()
     {
@@ -45,11 +47,26 @@ public class RCPAdditionalBehaviour : MonoBehaviour
     {
         if(lifeSlider.fillAmount > 0.98)
         {
-            sucessUnityEvent.Invoke();
+            if (currentPatient.Value.PatientCase.heartAttack)
+            {
+                sucessUnityEvent.Invoke();
+            }
+            else
+            {
+                wrongChoiceUnityEvent.Invoke();
+            }
         }
         else if (lifeSlider.fillAmount < 0.01)
         {
-            failureUnityEvent.Invoke();
+            if (currentPatient.Value.PatientCase.heartAttack)
+            {
+                failureUnityEvent.Invoke();
+            }
+            else
+            {
+                wrongChoiceUnityEvent.Invoke();
+            }
+           
         }
     }
 
