@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd70544b68be7b941984d3cf7734e67f, type: 3}
-  m_Name: Level1 (Hall)
+  m_Name: Level1 (Hall) (Chocking)
   m_EditorClassIdentifier: 
   levelIndex: 1
   backgroundImage: {fileID: 21300000, guid: 8632ad1173f819146b53b2735c9c933e, type: 3}

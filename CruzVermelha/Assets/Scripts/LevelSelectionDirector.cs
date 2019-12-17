@@ -43,6 +43,16 @@ public class LevelSelectionDirector : MonoBehaviour
         }
     }
 
+    public void CleanPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void UnlockAllLevels()
+    {
+        PlayerPrefs.SetInt("CurrentLevelIndex", 5);
+    }
+
     public void SelectLevel(Level x)
     {
         CurrentLevelReference.SetValueTo(x);
