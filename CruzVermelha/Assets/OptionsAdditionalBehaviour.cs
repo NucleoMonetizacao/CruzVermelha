@@ -19,4 +19,14 @@ public class OptionsAdditionalBehaviour : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void OpenWebSite()
+    {
+        Application.OpenURL("http://www.cruzvermelha.org.br/pb/");
+    }
+
+    public void OpenAppPage()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.cvb.members");
+    }
 }
