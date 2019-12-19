@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7207995124385111055}
   - component: {fileID: 3081379120415981159}
+  - component: {fileID: 7891148315067422546}
   m_Layer: 0
   m_Name: Patient1
   m_TagString: Untagged
@@ -143,6 +144,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a343e0a78d3212041b3320ac9df73b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScreenPoint: {fileID: 0}
+--- !u!114 &7891148315067422546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778402353896780422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a1e236631749c4dae2af955eb1a799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  per1: 1
+  per2: 0
+  per3: 0
+  partes:
+  - {fileID: 2704311388022872818}
+  - {fileID: 2704311388335904249}
+  - {fileID: 2704311389666435984}
+  - {fileID: 2704311388870347946}
+  - {fileID: 2704311389532398470}
+  - {fileID: 2704311388851802510}
+  - {fileID: 2704311389597694054}
+  - {fileID: 2704311389460013201}
+  - {fileID: 2704311388611345008}
+  - {fileID: 2704311388373934503}
+  - {fileID: 2704311388701984687}
+  novasPartes1:
+  - {fileID: 21300000, guid: 74611d7edd96d4549bcee6c6b8ae02cf, type: 3}
+  - {fileID: 21300000, guid: 7f4b0596d28aa644e8e8baa6e795f0ec, type: 3}
+  - {fileID: 21300000, guid: c37870f44053a10448e052fc18b40319, type: 3}
+  - {fileID: 21300000, guid: 072bc1b0fd30f764d999324f6afddc7d, type: 3}
+  - {fileID: 21300000, guid: ab5017ce009847e42a24538d12e1d2d1, type: 3}
+  - {fileID: 21300000, guid: 77e5448247b5baa48b1d203e3d12fcf5, type: 3}
+  - {fileID: 21300000, guid: ff9ab67c6ed9e2b438b6608ce38ef687, type: 3}
+  - {fileID: 21300000, guid: 4c6d54241b262394d8265f9b0cf325dd, type: 3}
+  - {fileID: 21300000, guid: 8009ee5d66e8ae64d999a320eae80a61, type: 3}
+  - {fileID: 21300000, guid: 58c92b95bec87624186fb2205448581b, type: 3}
+  - {fileID: 21300000, guid: b97bcb702d3033c4cb210de2103f8967, type: 3}
+  novasPartes2:
+  - {fileID: 21300000, guid: 6562db3a6cd92244b9fa96dda271203a, type: 3}
+  - {fileID: 21300000, guid: 02e2ea7887760b34d9ee35187653199e, type: 3}
+  - {fileID: 21300000, guid: 1bce0040dc2c1984db4026e9227596ec, type: 3}
+  - {fileID: 21300000, guid: 8aa6a5405f49c334690f0d742dcee8bf, type: 3}
+  - {fileID: 21300000, guid: 5f008228043ecb24e8c0fcd441f21070, type: 3}
+  - {fileID: 21300000, guid: 3dc2c9b584a8d704199bd569b4d26965, type: 3}
+  - {fileID: 21300000, guid: 235ad85c931d64f42b2bba2739042c12, type: 3}
+  - {fileID: 21300000, guid: 5df4766d75532374e889ced1bcd62c46, type: 3}
+  - {fileID: 21300000, guid: 1c1412c6737b30e4d873452a672df30c, type: 3}
+  - {fileID: 21300000, guid: 7b7a54877c1cdb94ca95b6db7b1a6de0, type: 3}
+  - {fileID: 21300000, guid: 8d0588705f521804382e708fe9740447, type: 3}
 --- !u!1 &2704311387912300794
 GameObject:
   m_ObjectHideFlags: 0

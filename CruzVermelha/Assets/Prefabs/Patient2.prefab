@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5655196234413201105}
   - component: {fileID: 5655196234413201104}
+  - component: {fileID: 8096303240329133409}
   m_Layer: 0
   m_Name: Patient2
   m_TagString: Untagged
@@ -143,6 +144,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a343e0a78d3212041b3320ac9df73b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScreenPoint: {fileID: 0}
+--- !u!114 &8096303240329133409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655196234413201103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a1e236631749c4dae2af955eb1a799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  per1: 0
+  per2: 1
+  per3: 0
+  partes:
+  - {fileID: 8908774863815029765}
+  - {fileID: 8908774863055768568}
+  - {fileID: 8908774864737070405}
+  - {fileID: 8908774863056216025}
+  - {fileID: 8908774863983912131}
+  novasPartes1:
+  - {fileID: 21300000, guid: 450559645933f3747ba9860f5c8c511c, type: 3}
+  - {fileID: 21300000, guid: e1d99698de8064c429594b1e2cabb333, type: 3}
+  - {fileID: 21300000, guid: 699cb071b3beb4f45be5419fa4484a4d, type: 3}
+  - {fileID: 21300000, guid: ceede2ad5b48a884abd5f9eab70e9c4c, type: 3}
+  - {fileID: 21300000, guid: e5dd8fbdba9bc6a419266056e075f438, type: 3}
+  novasPartes2:
+  - {fileID: 21300000, guid: ff7d052dfd0c4a849bba55f725276ae8, type: 3}
+  - {fileID: 21300000, guid: 8846d45d1af91b34db5fa7879f267ae4, type: 3}
+  - {fileID: 21300000, guid: 68496ca3179e85441a6a128299565309, type: 3}
+  - {fileID: 21300000, guid: b7fbbd19f8d41d14e9199039817f9438, type: 3}
+  - {fileID: 21300000, guid: 53f144db54988194d8cb31541303fa8b, type: 3}
 --- !u!1 &8908774862990512118
 GameObject:
   m_ObjectHideFlags: 0
