@@ -52,6 +52,12 @@ public class MiniGameRCP : MonoBehaviour
         
     }
 
+    public void Restart()
+    {
+        score = 0;
+        scoreText.text = "Acertos: " + score;
+    }
+
     public void ControleCursor()
     {
         cursor.transform.localPosition = new Vector3(cursor.transform.localPosition.x, valorCursor, cursor.transform.localPosition.z);

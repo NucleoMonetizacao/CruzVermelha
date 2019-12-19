@@ -23,6 +23,8 @@ public class RCPAdditionalBehaviour : MonoBehaviour
         currentPatient.Value.gameObject.SetActive(false);
     }
 
+ 
+
     public void EnablePatient()
     {
         currentPatient.Value.gameObject.SetActive(true);
@@ -45,28 +47,31 @@ public class RCPAdditionalBehaviour : MonoBehaviour
 
     public void Update() //deletar depois
     {
-        if(lifeSlider.fillAmount > 0.98)
+        if (Time.timeScale != 0)
         {
-            if (currentPatient.Value.PatientCase.heartAttack)
+            if (lifeSlider.fillAmount > 0.98)
             {
-                sucessUnityEvent.Invoke();
+                if (currentPatient.Value.PatientCase.heartAttack)
+                {
+                    sucessUnityEvent.Invoke();
+                }
+                else
+                {
+                    wrongChoiceUnityEvent.Invoke();
+                }
             }
-            else
+            else if (lifeSlider.fillAmount < 0.01)
             {
-                wrongChoiceUnityEvent.Invoke();
+                if (currentPatient.Value.PatientCase.heartAttack)
+                {
+                    failureUnityEvent.Invoke();
+                }
+                else
+                {
+                    wrongChoiceUnityEvent.Invoke();
+                }
+
             }
-        }
-        else if (lifeSlider.fillAmount < 0.01)
-        {
-            if (currentPatient.Value.PatientCase.heartAttack)
-            {
-                failureUnityEvent.Invoke();
-            }
-            else
-            {
-                wrongChoiceUnityEvent.Invoke();
-            }
-           
         }
     }
 
