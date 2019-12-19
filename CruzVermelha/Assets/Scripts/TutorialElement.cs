@@ -71,6 +71,7 @@ public class TutorialElement : MonoBehaviour
         if(pauseTimeWhileActive)
         {
             Time.timeScale = 0f;
+            Debug.Log("ue");
         }
     }
 

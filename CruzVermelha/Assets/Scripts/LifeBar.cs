@@ -34,6 +34,7 @@ public class LifeBar : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale != 0)
         barraDeVida.fillAmount -= perdeVida;
     }
 }
