@@ -84,5 +84,19 @@ public class RandomizerPersonagem : MonoBehaviour
             }
             existeC1 = true;
         }
+        StartCoroutine(ResetaTudo());
+    }
+
+
+
+    IEnumerator ResetaTudo()
+    {
+        yield return new WaitForSeconds(5);
+        existeA1 = false;
+        existeA2 = false;
+        existeB1 = false;
+        existeB2 = false;
+        existeC1 = false;
+        existeC2 = false;
     }
 }
